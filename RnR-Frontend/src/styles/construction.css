@@ -1,0 +1,32 @@
+.under-construction{
+    background-color: #ffffff;
+    width: 100%;
+    text-align: center;
+  }
+
+  .under-construction .backbutton{
+    background-color: #ffcc02;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    font-weight: 700;
+    position: absolute;
+    left: 500px;
+    top: 20px;
+  }
+
+  .under-construction .backbutton:hover{
+    background-color: #000000;
+    color:#ffcc02;
+    font-size: 24px;
+    position: absolute;
+    left: 500px;
+    top: 20px;
+  }
+
+  .under-construction .ucp{
+    height: 500px;
+    left: 400px;
+    position: absolute;
+    top: 100px;
+  }
+

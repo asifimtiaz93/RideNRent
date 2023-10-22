@@ -1,0 +1,142 @@
+.profile-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+
+
+.Profile_Frame {
+  position: absolute;
+  left: 50px;
+  top: 100px;
+  height: 510px;
+  width: 570px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+}
+input[type="file"] {
+  display: flex;
+  position:static;
+  top: 100px
+}
+
+button {
+
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  position: absolute;
+  top: 140px;
+  left: 10px;
+}
+
+.profile-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  position: absolute;
+  left: 420px;
+  top: 20px;
+  
+}
+.user-details1 {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 10px;
+  padding-right: 350px;
+  margin: 2px 0;
+  position: absolute;
+  top: 200px;
+  left: 10px
+}
+
+.user-details1 p {
+  margin: 5px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.user-details1 h2 {
+  font-size: 15px;
+  margin-top: 10px;
+}
+.user-details2 {
+
+  position: absolute;
+  left: 180px;
+  top: 160px;
+  font-size: 20px;
+  line-height: 15px;
+  margin: 5px;
+}
+
+.main_info {
+
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: bold;
+  margin: 5px;
+  
+}
+
+.checked {
+  color: orange;
+}
+
+.Ride_History {
+  flex: 1;
+  position: absolute;
+  left: 680px;
+  top: 100px;
+  font-size: 28px;
+}
+
+.Ride_Frame {
+  margin-right: 20px;
+  height: 100px;
+  width: 600px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 20px;
+}
+
+.nid-picture {
+  width: 100%; /* Adjust the width to your layout */
+  max-width: 300px; /* Set a maximum width if needed */
+  margin: 0 auto; /* Center the image horizontally */
+  text-align: center; /* Center the image within the div */
+  border: 1px solid #ccc; /* Add a border */
+  padding: 10px; /* Add padding around the image */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+}
+
+.nid {
+  max-width: 100%; /* Ensure the image doesn't overflow the container */
+  height: auto; /* Maintain the image's aspect ratio */
+  display: block; /* Remove extra spacing under the image */
+}

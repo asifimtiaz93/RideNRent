@@ -1,0 +1,103 @@
+.header2{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .header2 .div2 {
+    background-color: #ffffff;
+    height: 650px;
+    position: relative;
+    width: 1280px;
+  }
+  
+  .header2 .header22 {
+    background-color: transparent;
+    height: 64px;
+    left: 48px;
+    position: absolute;
+    top: 0px;
+    width: 1210px;
+  }
+  
+  .header2 .group-22 {
+    height: 61px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 417px;
+  }
+  
+  .header2 .text-wrapper2 {
+    background-color: #ffffff;
+    color: #75bf7a;
+    outline: none;
+    border: none;
+    font-family: "Audiowide-Regular", Helvetica;
+    font-size: 40px;
+    font-weight: 700;
+    left: -15px;
+    letter-spacing: 0;
+    line-height: 18px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 357px;
+    height: 50px;  
+  }
+  
+  .header2 .group-32 {
+    height: 53px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+    width: 53px;
+  }
+  
+  .header2 .text-wrapper-32 {
+    color: #000000;
+    font-family: "Actor-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 838px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 11px;
+    white-space: nowrap;
+  }
+  
+  .header2 .text-wrapper-42 {
+    color: #000000;
+    font-family: "Actor-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 1010px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 11px;
+    white-space: nowrap;
+  }
+  
+  .header2 .menu2{
+    display: flex;
+    justify-items: space-between;
+    gap: 70px;
+  }
+  
+  .header2 .text-wrapper-52{
+    color: #ffffff;
+    background-color: #75bf7a;
+    font-family: "Actor-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 1126px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 11px;
+    white-space: nowrap;
+  }

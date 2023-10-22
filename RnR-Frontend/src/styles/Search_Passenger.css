@@ -1,0 +1,123 @@
+.search_passenger {
+    background-color: #ffffff;
+    height: 50px;
+    position:relative;
+    width: 100%;
+  }
+  
+.search_passenger .available_driver {
+color: #000000;
+font-family:  
+    'PT Serif', serif;
+font-size: 40px;
+font-weight: 500;
+left: 80px;
+letter-spacing: 0;
+line-height: 50px;
+position: absolute;
+top: 130px;
+}
+
+.search_passenger .search-frame2 {
+align-items: center;
+background-color: #f5f5f5;
+border-radius: 10px;
+display: flex;
+gap: 10px;
+height: 200px;
+justify-content: center;
+left: 50px;
+padding: 12px 0px;
+width: 1250px;
+position: absolute;
+top: 200px;
+z-index: 0;
+}
+  
+.search_passenger .frame-book1 {
+align-items: center;
+background-color: #75bf7a;
+border-radius: 5px;
+display: flex;
+gap: 10px;
+height: 20px;
+justify-content: center;
+left: 1000px;
+padding: 12px 0px;
+position: absolute;
+top:350px;
+width: 120px;
+z-index: 1;
+}
+
+.search_passenger .frame-book1:hover {
+align-items: center;
+background-color: #26692a;
+border-radius: 5px;
+display: flex;
+gap: 10px;
+height: 20px;
+justify-content: center;
+left: 1000px;
+padding: 12px 0px;
+position: absolute;
+top:350px;
+width: 120px;
+z-index: 1;
+}
+
+.search_passenger .frame-chat1 {
+align-items: center;
+background-color: #75bf7a;
+border-radius: 5px;
+display: flex;
+gap: 10px;
+height: 20px;
+justify-content: center;
+left: 1150px;
+padding: 12px 0px;
+position: absolute;
+top:350px;
+width: 120px;
+}
+
+.search_passenger .frame-chat1:hover {
+align-items: center;
+background-color: #26692a;
+border-radius: 5px;
+display: flex;
+gap: 10px;
+height: 20px;
+justify-content: center;
+left: 1150px;
+padding: 12px 0px;
+position: absolute;
+top:350px;
+width: 120px;
+}
+  
+.search_passenger .text-wrapper-book1 {
+color: #ffffff;
+font-family: "Actor-Regular", Helvetica;
+font-size: 25px;
+font-weight: 500;
+left: 60px;
+letter-spacing: 0;
+line-height: normal;
+top: 15px;
+white-space: nowrap;
+cursor: pointer;
+}
+
+.search_passenger .text-wrapper-chat1 {
+color: #ffffff;
+font-family: "Actor-Regular", Helvetica;
+font-size: 25px;
+font-weight: 500;
+left: 100px;
+letter-spacing: 0;
+line-height: normal;
+top: 15px;
+white-space: nowrap;
+cursor: pointer;
+}

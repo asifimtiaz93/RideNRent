@@ -1,0 +1,84 @@
+.Header_In {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.Header_In .Header_In_0 {
+  background-color: transparent;
+  height: 64px;
+  left: 48px;
+  position: absolute;
+  top: 0px;
+  width: 1210px;
+}
+
+.Header_In .Header_In_1 {
+  height: 64px; /* Adjusted the height to match the header */
+  left: 0;
+  position: absolute;
+  top: 110;
+  width: 417px;
+}
+
+.Header_In .Header_In_T1 {
+  background-color: #ffffff;
+  color: #75bf7a;
+  outline: none;
+  border: none;
+  font-family: "Audiowide-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  left: -15px;
+  letter-spacing: 0;
+  line-height: 50px; /* Adjusted the line-height for vertical centering */
+  position: absolute;
+  top: 0; /* Positioned at the top */
+  white-space: nowrap;
+  width: 357px;
+  text-align: center; /* Center the text horizontally */
+  margin: 20px 0; /* Add some top and bottom margin for spacing */
+}
+
+.Header_In .Header_In_L {
+  height: 53px;
+  left: 0;
+  position: absolute;
+  top: 8px;
+  width: 53px;
+}
+
+.Header_In .Header_In_2 {
+  display: flex;
+  justify-content: space-between; /* Adjusted to "justify-content" */
+  gap: 70px;
+}
+
+.Header_In .Header_In_T2 {
+  color: #000000;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 1010px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.Header_In .Header_In_T3 {
+  color: #ffffff;
+  background-color: #75bf7a;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 1126px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}

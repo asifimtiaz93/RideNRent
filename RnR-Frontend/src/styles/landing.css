@@ -1,0 +1,296 @@
+.landing-page {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.landing-page .div {
+  background-color: #ffffff;
+  height: 650px;
+  position: relative;
+  width: 1280px;
+}
+
+.landing-page .header {
+  background-color: transparent;
+  height: 64px;
+  left: 48px;
+  position: absolute;
+  top: 20px;
+  width: 1210px;
+}
+
+.landing-page .group {
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 415px;
+}
+
+.landing-page .group-2 {
+  height: 61px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 417px;
+}
+
+.landing-page .text-wrapper {
+  background-color: #ffffff;
+  color: #75bf7a;
+  outline: none;
+  border: none;
+  font-family: "Audiowide-Regular", Helvetica;
+  font-size: 40px;
+  font-weight: 700;
+  left: 0; /* Set left to 0 to align with the left edge of the container */
+  letter-spacing: 0;
+  line-height: 50px; /* Adjust line-height to vertically center text */
+  position: absolute;
+  top: 0; /* Set top to 0 to move the button to the top */
+  white-space: nowrap;
+  width: 415px; /* Adjust the width to match the container width */
+  text-align: center; /* Center the text horizontally */
+  margin: 20px 0; /* Add some top and bottom margin for spacing */
+}
+
+.landing-page .group-3 {
+  height: 53px;
+  left: 0;
+  position: absolute;
+  top: 66px; /* Adjust the top to position the logo below the button */
+  width: 53px;
+}
+
+.landing-page .vector {
+  height: 21px;
+  left: 24px;
+  position: absolute;
+  top: 11px;
+  width: 6px;
+}
+
+.landing-page .text-wrapper-2 {
+  color: #000000;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 725px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.landing-page .text-wrapper-3 {
+  color: #000000;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 838px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.landing-page .text-wrapper-4 {
+  color: #000000;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 1010px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.landing-page .overlap-wrapper {
+  height: 50px;
+  left: 1097px;
+  position: absolute;
+  top: 14px;
+  width: 109px;
+}
+
+.landing-page .overlap {
+  background-color: #75bf7a;
+  border-radius: 5.95px;
+  height: 50px;
+  position: relative;
+  width: 110px;
+  left: 1125px;
+  top: 11px;
+}
+
+.landing-page .menu{
+  display: flex;
+  justify-items: space-between;
+  gap: 70px;
+}
+
+.landing-page .text-wrapper-5{
+  color: #ffffff;
+  background-color: #75bf7a;
+  font-family: "Actor-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 1126px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  white-space: nowrap;
+}
+
+.landing-page .REGISTER-SAVE-MONEY {
+  color: #000000;
+  font-family:  
+   'PT Serif', serif;
+  font-size: 40px;
+  font-weight: 500;
+  left: 80px;
+  letter-spacing: 0;
+  line-height: 50px;
+  position: absolute;
+  top: 180px;
+}
+
+.landing-page .its-simple-and-its {
+  color: #9e9da2;
+  font-family: "Alata-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 80px;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 330px;
+  width: 550px;
+}
+
+.landing-page .main-image {
+  height: 420px;
+  width: 500px;
+  left: 700px;
+  position: absolute;
+  top: 160px;
+}
+
+.landing-page .overlap-2 {
+  height: 67px;
+  left: 316px;
+  position: absolute;
+  top: 694px;
+  width: 294px;
+}
+
+.landing-page .overlap-group-wrapper {
+  height: 67px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 294px;
+}
+
+.landing-page .overlap-3 {
+  height: 67px;
+  position: relative;
+  width: 292px;
+}
+
+.landing-page .rectangle {
+  height: 67px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 255px;
+}
+
+.landing-page .text-wrapper-6 {
+  color: #ffffff;
+  font-family: "Anybody-Regular", Helvetica;
+  font-size: 24.6px;
+  font-weight: 400;
+  left: 85px;
+  letter-spacing: 0;
+  line-height: 0.1px;
+  position: absolute;
+  top: 33px;
+  width: 207px;
+}
+
+.landing-page .images-removebg-preview-1 {
+  left: 7px !important;
+  position: absolute !important;
+  top: 7px !important;
+}
+
+.landing-page .overlap-4 {
+  height: 50px;
+  left: 75px;
+  position: absolute;
+  top: 520px;
+  width: 250px;
+}
+
+.landing-page .overlap-5 {
+  height: 50px;
+  left: 350px;
+  position: absolute;
+  top: 520px;
+  width: 250px;
+}
+
+.landing-page .group-wrapper {
+  height: 50px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 250px;
+}
+
+.landing-page .div-wrapper {
+  height: 0px;
+  width: 0px;
+}
+
+.landing-page .overlap-group-2 {
+  background-color: #000000;
+  border-radius: 5px;
+  height: 67px;
+  position: absolute;
+  width: 260px;
+}
+
+.landing-page .text-wrapper-7 {
+  color: #ffffff;
+  font-family: "Anybody-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 87px;
+  letter-spacing: 0;
+  line-height: 0.1px;
+  position: absolute;
+  top: 32px;
+}
+
+.landing-page .text-wrapper-7:hover {
+  color: #75bf7a;
+}
+
+.landing-page .img-2 {
+  height: 63px;
+  left: 11px;
+  object-fit: cover;
+  position: absolute;
+  top: 1px;
+  width: 63px;
+}
