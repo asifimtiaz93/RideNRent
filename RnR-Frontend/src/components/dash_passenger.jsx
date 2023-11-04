@@ -4,6 +4,8 @@ import Header2 from "./header2";
 import Signup from "../assets/driverpic.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Button, Card, Form, Image } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const PassDashboard = () => {
   
@@ -121,82 +123,106 @@ export const PassDashboard = () => {
   };
 
   return (
-    <div className="driver-dashboard">
+    <Container className="driver-dashboard">
+      <Row>
+        <Col md={8}>
+        <Header2 />
+  
+  <h1 className="drivertext">Passenger's ZONE!</h1>
+    <Card className="greet">
+    <Card.Header>
+    Welcome, {passengerName}! 
+    </Card.Header>
+    <Card.Text>
+    Join our community of commuters and
+
+    start sharing rides today for
+
+    a more affordable, eco-friendly, and connected journey!
+    </Card.Text>
+    <Button
+    onClick={openshareyourcommute}
+    variant="primary"
+    size="lg"
+    className="find-button"
+  >
+    Find A Ride
+  </Button>
+
+    </Card>
+
+
+
+
+  <div className="">
+    <h2>Booked Rides:</h2>
+    <ul>
+      {driverRides.map((data) => (
+        <li key={data._id}>
+          <strong>Driver: {data.driver.fullName}</strong>
+          <br />
+          From: {data.pickup}
+          <br />
+          To: {data.destination}
+          <br />
+          Time: {data.time}
+          <br />
+          Mobile: {data.driver.mobile}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div className="search-results">
+    <h2>Ride History:</h2>
+    <ul className="list-group">
+      {searchResults.map((data) => (
+        <li key={data._id}>
+          <strong>Driver: {data.driver.fullName}</strong>
+          <br />
+          Time: {data.time}
+          <br />
+          Date: {formatDateString(data.completionDate)}
+          <br />
+          {data.review === 0 ? (
+            <div>
+              <label>Give Review:</label>
+              <Form.Select
+                onChange={(e) => setReviewValue(e.target.value)}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Select>
+              Stars
+              <br />
+              <Button
+                onClick={() => handleReviewRide(data._id)}
+                variant="primary"
+              >
+                Review
+              </Button>
+            </div>
+          ) : (
+            <div>Review: {data.review}</div>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+        </Col>
+         {/* Right Column */}
+         <Col md={4}>
+          <Image src={Signup} fluid roundedCircle />
+        </Col>
+      </Row>
      
-      <Header2/>
-
-      <div className="drivertext">Passenger's ZONE!</div>
-
-      <p className="driver_para">
-      Welcome, {passengerName}!
-        Join our community of commuters and
-        <br />
-        start sharing rides today for
-        <br />
-        a more affordable, eco-friendly and connected journey!
-      </p>
-
-      <div className="frame-23" onClick={openshareyourcommute} >
-        <div className="text-wrapper-65">Find A Ride</div>
-      </div>
-      <div className="search-results">
-        <h2>Booked Rides:</h2>
-        <ul>
-          {driverRides.map((data) => (
-            <li key={data._id}>
-              {/* Display ride information here */}
-              <strong>Driver: {data.driver.fullName}</strong><br />
-              From: {data.pickup}
-              <br/>
-              To: {data.destination}
-              <br/>
-              Time: {data.time}
-              <br/>
-              Mobile: {data.driver.mobile}
-              
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="search-results">
-        <h2>Ride History:</h2>
-        <ul>
-          {searchResults.map((data) => (
-            <li key={data._id}>
-              {/* Display ride information here */}
-              <strong>Driver: {data.driver.fullName}</strong><br />
-              Time: {data.time}
-              <br/>
-              Date: {formatDateString(data.completionDate)}
-              <br/>
-              {data.review === 0 ? (
-          <div>
-            <label>Give Review:</label>
-            <select onChange={(e) => setReviewValue(e.target.value)}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select> Stars 
-            <br/>
-            <button onClick={() => handleReviewRide(data._id)} className="Review-button">Review</button>
-              
-          </div>
-        ) : (
-          <div>
-            Review: {data.review}
-          </div>
-        )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      
-      <img className="driverdashpic" alt="Element" src={Signup} />
-
-    </div>
+    </Container>
   );
+  
 };
 
 export default PassDashboard;

@@ -1,17 +1,8 @@
 .header2{
     background-color: #ffffff;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
   }
-  
-  .header2 .div2 {
-    background-color: #ffffff;
-    height: 650px;
-    position: relative;
-    width: 1280px;
-  }
+
   
   .header2 .header22 {
     background-color: transparent;
@@ -62,25 +53,13 @@
     font-size: 20px;
     font-weight: 400;
     left: 838px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
+    margin-left: -40px;
+    position:relative;
     top: 11px;
-    white-space: nowrap;
+
   }
   
-  .header2 .text-wrapper-42 {
-    color: #000000;
-    font-family: "Actor-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    left: 1010px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 11px;
-    white-space: nowrap;
-  }
+
   
   .header2 .menu2{
     display: flex;
@@ -89,10 +68,9 @@
   }
   
   .header2 .text-wrapper-52{
-    color: #ffffff;
-    background-color: #75bf7a;
+ 
     font-family: "Actor-Regular", Helvetica;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 400;
     left: 1126px;
     letter-spacing: 0;

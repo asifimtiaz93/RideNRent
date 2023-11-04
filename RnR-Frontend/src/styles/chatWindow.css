@@ -1,0 +1,61 @@
+.messenger{
+    height: 80vh;
+    display: flex;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chat-box{
+    position: relative;
+    top: 100px;
+    flex: 5.5;
+    background-color: rgb(201, 201, 201);
+    
+    margin-left: 4px;
+}
+.chat-box-wrapper{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 400px;
+}
+.chat-left{
+    position: relative;
+    top: 100px;
+    flex: 2.5;
+    background-color: rgb(201, 201, 201);
+    width: 550px;
+    height: 400px;
+
+    margin-left: 4px;
+}
+
+.chat-right{
+    position: relative;
+    top: 100px;
+    flex: 2.5;
+    background-color: rgb(201, 201, 201);
+    width: 550px;
+    height: 400px;
+    margin-left: 4px;
+}
+
+.chat-box-bottom{
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.chat-input{
+    width: 80%;
+    height: 80px;
+
+}
+.chat-send-button{
+    position:static;
+    border-radius: 5px;
+    height: 40px;
+    width: 70px;
+    margin-left:12px;
+}

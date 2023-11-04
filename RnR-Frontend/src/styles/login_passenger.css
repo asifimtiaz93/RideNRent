@@ -185,7 +185,8 @@
     margin-bottom: 20px; 
     margin-left: 107px; /*  left margin */
     margin-right: 20px; 
-    
+    display: flex;
+    flex-direction: column;
     font-family: "Anybody-Regular", Helvetica;
     text-align: left;
     background-color: #fff;
@@ -204,15 +205,18 @@ input {
   border-radius: 4px;
 }
 
-.login-page .login-button {
+.login-button {
   font-family: "Anybody-Regular", Helvetica;
   background-color: #75bf7a;
   color: #fff;
   border: none;
-  padding: 10px 166px;
+  padding: 8px 16px;
   cursor: pointer;
   font-size: 20px;
   border-radius: 4px;
+  position: static;
+  margin-top: 1cm;
+  width: 90%;
 }
 
 .login-page  .login-button:hover {

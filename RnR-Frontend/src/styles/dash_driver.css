@@ -1,273 +1,77 @@
-.driver-dashboard {
-  background-color: #ffffff;
-  height: 650px;
-  position: relative;
+.driver-dashboard{
+  display: flex;
+  margin-top: 130px;
   width: 100%;
 }
-
-.driver-dashboard .frame {
-  align-items: flex-start;
-  background-color: #ffffff;
-  display: inline-flex;
-  flex-direction: column;
-  gap: 48px;
-  left: 115px;
-  position: absolute;
-  top: 211px;
-}
-
-.driver-dashboard .frame-wrapper {
-  align-items: flex-start;
-  display: inline-flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  gap: 24px;
+.headline{
+  margin-top: 28px;
   position: relative;
 }
-
-.driver-dashboard .div-wrapper {
-  align-items: flex-start;
-  display: inline-flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  gap: 48px;
-  position: relative;
+/* Apply these styles to the driver-para class */
+.driver-para {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  overflow: auto;
+  height: 2.8cm;
+  
 }
 
-.driver-dashboard .log-in-wrapper {
-  align-items: flex-start;
-  display: inline-flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  gap: 12px;
-  position: relative;
-}
-
-.driver-dashboard .log-in {
-  color: #000000;
-  font-family: "Anybody-Regular", Helvetica;
-  font-size: 50px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: -100px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.driver-dashboard .drivertext {
-  color: #000000;
-  font-family:  
-   'PT Serif', serif;
-  font-size: 45px;
-  font-weight: 500;
-  left: 80px;
-  letter-spacing: 0;
-  line-height: 50px;
-  position: absolute;
-  top: 200px;
-}
-
-.driver-dashboard .driver_para {
-  color: #9e9da2;
-  font-family: "Alata-Regular", Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  left: 80px;
-  letter-spacing: 0;
-  line-height: 28px;
-  position: absolute;
-  top: 260px;
-  width: 550px;
-}
-
-
-.driver-dashboard .frame-23 {
-  align-items: center;
-  background-color: #75bf7a;
-  border-radius: 5px;
-  display: flex;
-  gap: 10px;
-  height: 40px;
-  justify-content: center;
-  left: 80px;
-  padding: 12px 0px;
-  position: absolute;
-  top:425px;
-  width: 350px;
-}
-
-.driver-dashboard .frame-23:hover {
-  align-items: center;
-  background-color: #26692a;
-  border-radius: 5px;
-  display: flex;
-  gap: 10px;
-  height: 40px;
-  justify-content: center;
-  left: 80px;
-  padding: 12px 0px;
-  position: absolute;
-  top: 425px;
-  width: 350px;
-}
-
-.driver-dashboard .text-wrapper-63 {
-  color: #ffffff;
-  font-family: "Actor-Regular", Helvetica;
-  font-size: 25px;
-  font-weight: 500;
-  left: 60px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 15px;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.driver-dashboard .frame-3 {
-  align-items: center;
-  background-color: #75bf7a;
-  border-radius: 5px;
-  display: flex;
-  gap: 10px;
-  height: 57px;
-  justify-content: center;
-  left: 115px;
-  padding: 12px 0px;
-  position: absolute;
-  top: 400px;
-  width: 377px;
-}
-
-.driver-dashboard .frame-3:hover {
-  align-items: center;
-  background-color: #26692a;
-  border-radius: 5px;
-  display: flex;
-  gap: 10px;
-  height: 57px;
-  justify-content: center;
-  left: 115px;
-  padding: 12px 0px;
-  position: absolute;
-  top: 400px;
-  width: 377px;
-}
-
-.driver-dashboard .text-wrapper-7 {
-  color: #ffffff;
-  font-family: "Actor-Regular", Helvetica;
-  font-size: 25px;
-  font-weight: 500;
-  left: 100px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 25px;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.driver-dashboard .text-wrapper-7:hover {
-  color: #ffffff;
-  font-family: "Actor-Regular", Helvetica;
-  font-size: 25px;
-  font-weight: 500;
-  left: 100px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 25px;
-  white-space: nowrap;
-}
-
-.driver-dashboard .driverdashpic {
-  height: 420px;
-  width: 700px;
-  left: 600px;
-  position: absolute;
-  top: 120px;
+.custom-button{
+  margin-top: .3cm;
 }
 
 
 
+/* Style the search results */
+.search-results {
+  margin-top: 2rem;
+}
 
-/* Style for the container of the search results */
-.search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Style the ride cards */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Style the image */
+img {
+  max-width: 50%;
+  border-radius: 50%;
+}
+
+/* Style the right column */
+.col-md-4 {
   text-align: center;
 }
 
-/* Style for the search results */
-.search-results {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  max-width: 500px;
-  width: 100%;
+/* Customize button colors */
+.btn-primary {
+  background-color: #007BFF;
+  border-color: #007BFF;
 }
 
-.search-results h2 {
-  font-size: 1.5em;
-  color: #289a19;
-  margin-bottom: 10px;
+.btn-secondary {
+  background-color: #6C757D;
+  border-color: #6C757D;
 }
 
-.search-results ul {
-  list-style: none;
-  padding: 0;
+.btn-success {
+  background-color: #28A745;
+  border-color: #28A745;
 }
 
-.search-results li {
-  margin-bottom: 15px;
-  border: 1px solid #e1e1e1;
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+.btn-warning {
+  background-color: #FFC107;
+  border-color: #FFC107;
 }
 
-/* Style for buttons inside the search results */
-.complete-button {
-  padding: 10px 20px;
-  background-color: #058d29;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.25s;
-
+.btn-danger {
+  background-color: #DC3545;
+  border-color: #DC3545;
 }
-
-.complete-button:hover {
-  background-color: #137b00;
-}
-
-.search-results button + button {
-  margin-top: 10px;
-}
-/* Add this CSS to your stylesheet */
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 0.4em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.25s;
-  margin-right: 10px;
-}
-
-.delete-button:hover {
-  background-color: darkred;
-}
-

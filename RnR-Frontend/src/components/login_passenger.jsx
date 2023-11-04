@@ -71,7 +71,7 @@ export const Login = () => {
             value={email}
             onChange={(e) => setemail(e.target.value)}
             id="email" placeholder="Enter your email" />
-
+            <br/>
             <input type="password"
             value={password}
             onChange={(e) => setpassword(e.target.value)}

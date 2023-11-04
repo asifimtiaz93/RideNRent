@@ -82,38 +82,49 @@ export const DriverCommute = () => {
 
     <div className="drivertext2">Share Your COMMUTE!</div>
 
-    <div className="commute-driver-form">
+    <div className="commute-driver-form pb-20" >
 
-    <input type="text"
+    <input type="text" 
     value={pickup}
     onChange={(e) => setPickup(e.target.value)}
-     id="pickup" placeholder="Boarding Point" />
+     id="pickup" placeholder="Boarding Point" 
+     className="w-4/50 h-7 p-2  text-base"
+     />
    <br/>
    <input type="text" 
     value={destination}
     onChange={(e) => setDestination(e.target.value)}
-    id="destination" placeholder="Destination Point" />
+    id="destination" placeholder="Destination Point" 
+    className="w-4/50 h-7 p-2  text-base"
+    />
   <br/>
     <input type="time" 
     value={time}
     onChange={(e) => settime(e.target.value)}
-    id="time" placeholder="Time" />
+    id="time" placeholder="Time" 
+    className="w-4/50 h-7 p-2  text-base"
+    />
  <br/>
     <input type="number"
     value={seats}
     onChange={(e) => setseats(e.target.value)}
-    id="seats" placeholder="Availabe Seats" />
+    id="seats" placeholder="Availabe Seats" 
+    className="w-4/50 h-7 p-2  text-base"
+    />
  <br/>
     <input type="number" 
     value={fare}
     onChange={(e) => setfare(e.target.value)}
-    id="fare" placeholder="Asking Fare" />
+    id="fare" placeholder="Asking Fare" 
+    className="w-4/50 h-7 p-2  text-base"
+    />
  <br/>
 
- <button onClick={handleSaveUser} className="commutedriver-button">List Ride</button>
-      
+ <button onClick={handleSaveUser} className="bg-green-700 text-white p-2 px-6 text-xl rounded my-32 mx-3">List Ride</button>
+ 
+ </div>  
       <img className="driverdashpic" alt="Element" src={Signup} />
-    </div>
+    
     </div>
   );
 };

@@ -3,7 +3,8 @@ import "../styles/header2.css";
 import logo from "../assets/Group.png"
 import Main from "../assets/Main.jpg"
 import { useNavigate } from "react-router-dom";
-
+import {Button} from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css"
 export const Header2 = () => {
 
   const navigate=useNavigate();
@@ -23,20 +24,18 @@ export const Header2 = () => {
   
   return (
     <div className="header2">
-      <div className="div2">
-
       <header className="header22">
-              <div className="group-22">
-                <button onClick={openlanding} className="text-wrapper2">RideNRent</button>
-                <img className="group-32" alt="Group" src={logo} />
+        <div className="group-22">
+            <Button onClick={openlanding} className="text-wrapper2" >RideNRent</Button>
+            <img className="group-32" alt="Group" src={logo} />
           </div>
          <div className="menu2"> 
-          <button onClick={openconstruction} className="text-wrapper-32">How it works</button>
-          <button onClick={openprofile} className="text-wrapper-42">Profile</button>
-          <button onClick={openlogout} className="text-wrapper-52">Log Out</button>
+          <Button onClick={openconstruction} className="text-wrapper-32" variant="outline-success">How it works</Button>
+          <Button onClick={openprofile} className="text-wrapper-32" variant="outline-success">Profile</Button>
+          <Button onClick={openlogout} className="text-wrapper-52" variant="success">Log Out</Button>
         </div>
       </header>
-      </div>
+      
     </div>
   );
 };

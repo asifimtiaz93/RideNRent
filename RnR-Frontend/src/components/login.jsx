@@ -3,7 +3,8 @@ import "../styles/login.css";
 
 import logo from "../assets/Group.png"
 import Signup from "../assets/signup.png"
-
+import {Button, Card, Col, Row, Image} from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css"
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -34,35 +35,43 @@ export const LoginPage = () => {
 
         <header className="header">
               <div className="group-2">
-                <button onClick={openlanding} className="text-wrapper">RideNRent</button>
+                <Button onClick={openlanding} className="text-wrapper" variant="outline-success">RideNRent</Button>
                 <img className="group-3" alt="Group" src={logo} />
           </div>
          <div className="menu"> 
-          <button onClick={openconstruction} className="text-wrapper-3">How it works</button>
-          <button onClick={openlogin} className="text-wrapper-4">Log In</button>
-          <button onClick={opensignup} className="text-wrapper-5">Sign Up</button>
+          <Button onClick={openconstruction} className="text-wrapper-3"variant="outline-success">How it works</Button>
+          <Button onClick={openlogin} className="text-wrapper-4"variant="outline-success">Log In</Button>
+          <Button onClick={opensignup} className="text-wrapper-5" variant="success">Sign Up</Button>
         </div>
       </header>
+    <Row>
 
 
-      <div className="frame1">
-        <div className="frame-wrapper1">
-          <div className="div-wrapper1">
-            <div className="log-in-wrapper1">
-              <div className="log-in1">Log In</div>
-            </div>
-          </div>
-        </div>
+      <Col md={6} >
+
+          <h1 className="heading">Login</h1>  
+          <Card className="card-log">
+        < Button variant="success" onClick={openlogindriver} size="lg" className="button-log">
+          I'm a Driver
+         </Button>
+
+         <Button variant="success" onClick={openloginpassenger} size="lg" className="button-log">
+          I'm a passenger
+         </Button>
+         </Card>
+
+      </Col>
+      <Col md={6} >
+
+      <Image src={Signup} fluid alt="Image" className="signup-image" /> 
+   
+
+      </Col>
+      </Row>
       </div>
 
-      <div className="frame-21" onClick={openlogindriver} >
-        <div className="text-wrapper-61">I’m a Driver</div>
-      </div>
-      <div className="frame-31" onClick={openloginpassenger} >
-        <div  className="text-wrapper-71">I’m a Passenger</div>
-      </div>
-      <img className="element1" alt="Element" src={Signup} />
-    </div>
+
+
   );
 };
 

@@ -1,20 +1,12 @@
 .driver-commute {
     background-color: #ffffff;
     height: 650px;
-    position: relative;
+    position: flex;
+    flex-direction: column;
     width: 100%;
   }
   
-  .driver-commute .frame {
-    align-items: flex-start;
-    background-color: #ffffff;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 48px;
-    left: 115px;
-    position: absolute;
-    top: 211px;
-  }
+
   
   .driver-commute .frame-wrapper {
     align-items: flex-start;
@@ -100,115 +92,21 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+
   
   
-  .driver-commute .frame-24 {
-    align-items: center;
-    background-color: #75bf7a;
-    border-radius: 5px;
-    display: flex;
-    gap: 10px;
-    height: 40px;
-    justify-content: center;
-    left: 130px;
-    padding: 12px 0px;
-    position: absolute;
-    top:620px;
-    width: 350px;
-  }
+
+
   
-  .driver-commute .frame-24:hover {
-    align-items: center;
-    background-color: #26692a;
-    border-radius: 5px;
-    display: flex;
-    gap: 10px;
-    height: 40px;
-    justify-content: center;
-    left: 130px;
-    padding: 12px 0px;
-    position: absolute;
-    top: 620px;
-    width: 350px;
-  }
+
   
-  .driver-commute .text-wrapper-65 {
-    color: #ffffff;
-    font-family: "Actor-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 500;
-    left: 140px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 15px;
-    white-space: nowrap;
-    cursor: pointer;
-  }
+
   
-  .driver-commute .frame-3 {
-    align-items: center;
-    background-color: #75bf7a;
-    border-radius: 5px;
-    display: flex;
-    gap: 10px;
-    height: 57px;
-    justify-content: center;
-    left: 115px;
-    padding: 12px 0px;
-    position: absolute;
-    top: 400px;
-    width: 377px;
-  }
+
   
-  .driver-commute .frame-3:hover {
-    align-items: center;
-    background-color: #26692a;
-    border-radius: 5px;
-    display: flex;
-    gap: 10px;
-    height: 57px;
-    justify-content: center;
-    left: 115px;
-    padding: 12px 0px;
-    position: absolute;
-    top: 400px;
-    width: 377px;
-  }
+
   
-  .driver-commute .text-wrapper-7 {
-    color: #ffffff;
-    font-family: "Actor-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 500;
-    left: 100px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 25px;
-    white-space: nowrap;
-    cursor: pointer;
-  }
-  
-  .driver-commute .text-wrapper-7:hover {
-    color: #ffffff;
-    font-family: "Actor-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 500;
-    left: 100px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 25px;
-    white-space: nowrap;
-  }
+
   
   .driver-commute .driverdashpic {
     height: 420px;
@@ -219,12 +117,12 @@
   }
   
   .commutedriver-button {
-    font-family: "Anybody-Regular", Helvetica;
+
     background-color: #75bf7a;
     color: #fff;
-    border: none;
+
     padding: 10px 50px;
-    cursor: pointer;
+
     font-size: 20px;
     border-radius: 4px;
   }

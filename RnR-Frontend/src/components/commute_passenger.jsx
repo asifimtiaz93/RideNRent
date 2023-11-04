@@ -5,8 +5,19 @@ import logo from "../assets/Group.png"
 import Car from "../assets/passenger.png"
 import axios from "axios";
 import Header2 from "./header2";
-
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Form,
+  ButtonGroup,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+
+
 
 export const Commute_Passenger = () => {
 
@@ -28,6 +39,9 @@ export const Commute_Passenger = () => {
   }
   const openlanding = () => {
     navigate("/");
+  }
+  const openChat =() =>{
+    navigate("/chatWindow");
   }
   
   const [psngrId, setId] = useState("");
@@ -60,6 +74,8 @@ const [pickup, setPickup] = useState("");
 const [destination, setDestination] = useState("");
 const [seats, setseats] = useState("");
 const [searchResults, setSearchResults] = useState([]);
+
+
 // Define a function to handle booking a ride
 const handleBookRide = (rideId) => {
   const token = localStorage.getItem("token");
@@ -84,6 +100,38 @@ const handleBookRide = (rideId) => {
       console.error("Error booking ride: ", error);
       // Handle booking error, e.g., show an error message
       alert("Error booking ride. Please try again later.");
+    });
+};
+
+
+
+// Define a function to handle chatting
+const handleChat = (rideId) => {
+  const token = localStorage.getItem("token");
+
+  const passengerId = psngrId;
+
+  if (!passengerId) {
+    alert("You must be logged in as a passenger to book a ride.");
+    return;
+  }
+  // Make an API request to update the Ride model as booked
+  axios
+    .post(`http://localhost:4000/chatWindow/${rideId}`, null, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then(() => {
+      localStorage.setItem("rideid", rideId);
+      localStorage.setItem("passengerid", passengerId);
+      navigate("/chatWindow"); // Redirect to chat window
+    }
+    )
+    .catch((error) => {
+      console.error("Error handling chat: ", error);
+      // Handle booking error, e.g., show an error message
+      alert("Error handling chat.");
     });
 };
 
@@ -133,73 +181,107 @@ const handleSaveUser = (e) => {
 
 
   return (
-    <div className="passenger-commute">
+    <Container className="passenger-commute">
+      <Header2 />
+      <Row>
+        <Col md={6}>
+        <h1 className="font-weight-bold text-4xl">Book A Commute!</h1>
+      <Card className="border shadow-sm p-3 ">
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="text"
+              value={pickup}
+              onChange={(e) => setPickup(e.target.value)}
+              placeholder="Boarding Point"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="text"
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              placeholder="Destination Point"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="number"
+              value={seats}
+              onChange={(e) => setseats(e.target.value)}
+              placeholder="Available Seats"
+            />
+          </Form.Group>
+          <Card.Footer>
+          <Button
+            onClick={handleSaveUser}
+            variant="success"
+            size="lg"
+            className="cust-btn"
+            >
+            Search
+           
+          </Button>
+          </Card.Footer>
+
+        </Form>
+      </Card>
+
+
      
+        </Col>
 
-      <Header2/>
-
-      <div className="drivertext2">Book A Commute!</div>
-
-      <div className="commute-passenger-form">
-
-      <input type="text"
-    value={pickup}
-    onChange={(e) => setPickup(e.target.value)}
-     id="pickup" placeholder="Boarding Point" />
-   <br/>
-   <input type="text" 
-    value={destination}
-    onChange={(e) => setDestination(e.target.value)}
-    id="destination" placeholder="Destination Point" />
-  <br/>
-    <input type="number"
-    value={seats}
-    onChange={(e) => setseats(e.target.value)}
-    id="seats" placeholder="Availabe Seats" />
-  <br/>
-      <button onClick={handleSaveUser} className="commutedriver-button">Search</button>
-
+        <Col xs={1} >
+        </Col>
         
-        
-        <img className="main-image" alt="Main image" src={Car} />
-        
+        <Col className="right-col" >
+        <Row >
+       
+        </Row>
+        <Row>
+        <Card>
 
-        
-      </div>
+        <Card.Body>
+          <h2 className="font-weight-bold text-lg">Search Results:</h2>
+          <ButtonGroup className="bg-sort">
+        <Button onClick={handleSortByFare} variant="success" >Sort by Fare</Button>
+        <Button onClick={handleSortByRating} variant="success">Sort by Rating</Button>
+        </ButtonGroup>
+          <ul className="list-unstyled">
+            {sortedResults.map((ride) => (
+              <li key={ride._id} className="border border-success shadow mb-3">
+                <strong>Driver: {ride.driver.fullName}</strong>
+                <br />
+                Pickup: {ride.pickup}, Destination: {ride.destination}, Time: {ride.time}, Status: {ride.status}, Rating: {ride.driver.rating}, Fare: {ride.fare}
+                <br />
+                <div className="d-flex justify-content-between">
+                  {ride.status !== "Booked" && (
+                    <Button
+                      onClick={() => handleBookRide(ride._id)}
+                      variant="success"
+                      className="cust-btn"
+                    >
+                      Book
+                    </Button>
+                  )}
+                  <Button onClick={() => handleChat(ride._id)} variant="outline-success" className="cust-btn">
+                    Chat
+                  </Button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Card.Body>
+      </Card>
+      </Row>
+        </Col>
+      </Row>
       
-
-      <div className="search-frame2">
-        <h2>Search Results:</h2>
-        <div>
-          <button onClick={handleSortByFare} className="sort-button">
-            Sort by Fare
-          </button>
-          <br/>
-          <button onClick={handleSortByRating} className="sort-button">
-            Sort by Rating
-          </button>
-        </div>
-        <ul>
-          {sortedResults.map((ride) => (
-            <li key={ride._id}>
-              {/* Display ride information here */}
-              <strong>Driver: {ride.driver.fullName}</strong><br />
-              Pickup: {ride.pickup}, Destination: {ride.destination}, Time: {ride.time}, Status: {ride.status}, Rating: {ride.driver.rating}, Fare: {ride.fare}
-              <br/>
-              
-              {ride.status !== "Booked" && (
-          <button onClick={() => handleBookRide(ride._id)} className="book-button">
-            Book
-          </button>
-        )}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-
-    </div>
+    
+   
+    </Container>
   );
 };
+
 
 export default Commute_Passenger;

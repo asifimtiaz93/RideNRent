@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from "react";
-import "../styles/dash_driver.css";
+import "../styles/dash_driver.css"
 import Header2 from "./header2";
 import Signup from "../assets/driverpic.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import chatWindow from "./chatWindow";
+import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css"
+import Placeholder from 'react-bootstrap/Placeholder';
 export const DriverDashboard = () => {
   
   const navigate=useNavigate();
@@ -140,54 +143,85 @@ const handleDeleteRide = (rideId) => {
     navigate("/construction");
   }
 
+  const chatWindow = () => {
+    navigate("/chatWindowDriver");
+    
+  }
+
   return (
-    <div className="driver-dashboard">
-     
-      <Header2/>
+    <Container className="driver-dashboard">
+      <Row>
+        {/* Left Column */}
+        <Col md={8}>
+          <Header2 />
+          <h1 className="headline">Driver's ZONE!</h1>
+          <Card>
+            <Card.Body>
+              <Card.Header className="display-6">
+              Welcome, {dvrName}! 
+              </Card.Header>
+              <Card.Text className="driver-para" >
+              Reduce your daily commute costs and
+ 
+ connect with fellow travelers. <br/>
 
-      <div className="drivertext">Driver's ZONE!</div>
+ Share your commute today for a greener,
 
-      <p className="driver_para">
-      Welcome, {dvrName}!
-        Reduce your daily commute costs and 
-        <br />
-        connect with fellow travelers.
-        <br />
-        Share your commute today for a greener,
-        <br/>
-        more efficient journey!
-      </p>
+ more efficient journey!
+              </Card.Text>
 
-      <div className="frame-23" onClick={openshareyourcommute} >
-        <div className="text-wrapper-63">List Your Ride</div>
-      </div>
+         
+            <Button onClick={openshareyourcommute} size="lg" variant="primary" className="custom-button">
+            List Your Ride
+          </Button>
+          </Card.Body>
       
-      <img className="driverdashpic" alt="Element" src={Signup} />
-      
-      <div className="search-results">
-        <h2 >Your Listed Rides:</h2>
-        <ul>
-          {driverRides.map((ride) => (
-            <li key={ride._id}>
-              Pickup: {ride.pickup}
-              <br/>
-              Destination: {ride.destination}
-              <br/>
-               Time: {ride.time}
-               <br/>
-              Status: {ride.status}
-              {ride.status === "Booked" && (
-        <button onClick={() => handleCompleteRide(ride._id)} className="complete-button">Complete</button>
-      )}
-      {ride.status === "Completed" && (
-        <button onClick={() => handleAvailableRide(ride._id)} className="complete-button">Make Available</button>
-      )}
-       <button onClick={() => handleDeleteRide(ride._id)} className="delete-button">Delete Ride</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+          </Card>
+
+    
+
+          <div className="">
+            <h2>Your Listed Rides:</h2>
+            <Row>
+              {driverRides.map((ride) => (
+                <Col key={ride._id} sm={12} md={6} lg={4} xl={3}>
+                  <Card className="mb-3">
+                    <Card.Body>
+                      <Card.Title className="mb-2">Pickup: {ride.pickup}</Card.Title>
+                      <Card.Text>
+                        Destination: {ride.destination}
+                        <br />
+                        Time: {ride.time}
+                        <br />
+                        Status: {ride.status}
+                      </Card.Text>
+                      {ride.status === "Booked" && (
+                        <Button onClick={() => handleCompleteRide(ride._id)} variant="success">
+                          Complete
+                        </Button>
+                      )}
+                      {ride.status === "Completed" && (
+                        <Button onClick={() => handleAvailableRide(ride._id)} variant="warning">
+                          Make Available
+                        </Button>
+                      )}
+                      <Button onClick={() => handleDeleteRide(ride._id)} variant="danger">
+                        Delete Ride
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Col>
+
+        {/* Right Column */}
+        <Col md={4}>
+          <Image src={Signup} fluid roundedCircle />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
