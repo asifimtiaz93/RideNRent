@@ -1,111 +1,107 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Message from './Message';
+import axios from 'axios';
 
-import "../styles/chatWindow.css"
-import Header2 from "./header2";
-import Message from "./message";
-import axios from "axios";
+import '../styles/chatWindow.css';
+import Header2 from './header2';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-const chatWindow = (own) => {
+
+const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
   const [conversationId, setConversationId] = useState(null);
-  const passengerId = localStorage.getItem("passengerid");
-  const rideId = localStorage.getItem("rideid");
-  const token = localStorage.getItem("token");
+  const passengerId = localStorage.getItem('passengerid');
+  const rideId = localStorage.getItem('rideid');
+  const token = localStorage.getItem('token');
   const [textm, settext] = useState('');
+
   useEffect(() => {
-    axios.post(`http://localhost:4000/chatWindow/${rideId}`,null,{
-      headers: {
-        Authorization: token,
-      },
-    })
+    axios
+      .post(`http://localhost:4000/chatWindow/${rideId}`, null, {
+        headers: {
+          Authorization: token,
+        },
+      })
       .then((response) => {
         const convId = response.data.conversationId;
-        
-        
-
         setConversationId(convId);
-        console.log(conversationId);
       })
-      .catch((error)=>{
+      .catch((error) => {
         console.log(error);
-      })
-  },[]);
+      });
+  });
 
   useEffect(() => {
-    
-    axios.get(`http://localhost:4000/messages/${conversationId}`,{
-      headers: {
-        Authorization: token,
-      },
-    })
+    axios
+      .get(`http://localhost:4000/messages/${conversationId}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
       .then((response) => {
         const msg = response.data;
         setMessages(msg);
-        console.log(messages);
       })
-      .catch((error)=>{
+      .catch((error) => {
         console.log(error);
-      })
+      });
   });
+
   const handleSend = (e) => {
+    e.preventDefault();
     const data = {
       conversationId,
       passengerId,
-      textm
+      textm,
     };
 
     axios
-      .post(`http://localhost:4000/messages/${conversationId}`, data)
+      .post(`http://localhost:4000/messages/${conversationId}`, data, {
+        headers: {
+          Authorization: token,
+        },
+      })
       .then(() => {
-        
-        
-        
+        settext('');
       })
       .catch((err) => {
         console.log(err);
-      })
-    };
+      });
+  };
 
   return (
+    <div className="messenger">
+      <Header2 />
 
-    
+      <Container>
+        <Row>
 
-    <div className='messenger'>
-      <Header2/>
-      
-      <div className="chat-left">
-      {conversationId} 
+          <Col className="chat-box">
+            <div className="chat-box-wrapper">
+              {messages.map((m) => (
+                <Message key={m._id} message={m} own={m.sender === passengerId} />
+              ))}
+            </div>
 
-      </div>
-      <div className="chat-box">
-      <div className="chat-box-wrapper">
-        {messages.map((m)=>(
-          <Message message = {m} own={m.sender === passengerId}/>
-        ))}
-      
-      </div>
-      
-      <div className="chat-box-bottom">
-        <input
-         value={textm}
-         onChange={(e) => settext(e.target.value)}
-                 
-        className="chat-input" type="text" placeholder="Type a message..." />
-        <button onClick={handleSend} className='chat-send-button'>Send</button>
-
-      </div>
-      </div>
-      
-
-      <div className="chat-right">
-      box 
-
-      </div>
-      
-
+            <Form onSubmit={handleSend} className="chat-box-bottom">
+              <Form.Control
+                value={textm}
+                onChange={(e) => settext(e.target.value)}
+                className="chat-input"
+                type="text"
+                placeholder="Type a message..."
+              />
+              <Button type="submit" className="chat-send-button">
+              <i className="bi bi-arrow-right-circle"></i>
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </div>
-  )
-}
+  );
+};
 
-export default chatWindow
+export default ChatWindow;

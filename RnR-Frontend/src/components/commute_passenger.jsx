@@ -239,7 +239,7 @@ const handleSaveUser = (e) => {
        
         </Row>
         <Row>
-        <Card>
+        <Card className="search-result">
 
         <Card.Body>
           <h2 className="font-weight-bold text-lg">Search Results:</h2>

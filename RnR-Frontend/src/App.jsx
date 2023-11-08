@@ -23,6 +23,9 @@ import Commute_Passenger from "./components/commute_passenger";
 import Search_Driver from "./components/Search_Driver";
 import Search_Passenger from "./components/Search_Passenger";
 import ChatWindow from "./components/chatWindow";
+import ChatWindowDriver from "./components/chatWindowDriver";
+import Marzun from "./components/marzun"
+import Notification from "./components/Notification";
 export const App = () => {
   return (
     <div className="landing-page">
@@ -49,6 +52,9 @@ export const App = () => {
         <Route path="search_driver" element={<Search_Driver/>}/>
         <Route path="search_passenger" element={<Search_Passenger/>}/>
         <Route path="chatWindow" element={<ChatWindow/>}/>
+        <Route path="chatWindowDriver" element={<ChatWindowDriver/>}/>
+
+        <Route path="notification" element={<Notification/>}/>
       </Routes>
     </div>
   );

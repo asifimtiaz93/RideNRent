@@ -25,4 +25,15 @@
     max-width: 100%;
     margin-top: 2rem;
   }
-  
+  .chat-butt{
+    margin-top: -.5cm;
+    margin-left: 17cm;
+  }
+
+  .sel-star{
+    width: 2cm;
+  }
+  .rev-butt{
+    margin-top: -0.4cm;
+    margin-left: 4cm;
+  }

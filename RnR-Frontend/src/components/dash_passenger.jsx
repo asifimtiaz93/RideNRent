@@ -13,6 +13,7 @@ export const PassDashboard = () => {
   const [passengerName, setPassengerName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [driverRides, setDriverRides] = useState([]);
+  const [passengerId, setPassengerId] = useState([]);
   useEffect(() => {
     // Fetch passenger information using the JWT token
     const token = localStorage.getItem("token");
@@ -71,10 +72,13 @@ export const PassDashboard = () => {
       })
       .then((response) => {
         // Assuming your backend returns passenger information with a "fullName" field
+        const passengerId = response.data.passenger._id;
         const fullName = response.data.passenger.fullName;
         console.log(fullName);
+        console.log(passengerId);
 
         setPassengerName(fullName); // Update the state with the passenger's name
+        setPassengerId(passengerId);
       })
       .catch((error) => {
         // Handle errors, e.g., if the token is invalid
@@ -82,6 +86,36 @@ export const PassDashboard = () => {
         navigate("/login"); // Redirect to login if there's an error
       });
   }, []);
+
+  
+// Define a function to handle chatting
+const handleChat = (rideId) => {
+  const token = localStorage.getItem("token");
+  if (!passengerId) {
+    alert("You must be logged in as a passenger to book a ride.");
+    return;
+  }
+  // Make an API request to update the Ride model as booked
+  axios
+    .post(`http://localhost:4000/chatWindow/${rideId}`, null, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then(() => {
+      localStorage.setItem("rideid", rideId);
+      localStorage.setItem("passengerid", passengerId);
+      navigate("/chatWindow"); // Redirect to chat window
+    }
+    )
+    .catch((error) => {
+      console.error("Error handling chat: ", error);
+      // Handle booking error, e.g., show an error message
+      alert("Error handling chat.");
+    });
+};
+
+
   const openshareyourcommute = () => {
     navigate("/commute_passenger");
   }
@@ -154,13 +188,15 @@ export const PassDashboard = () => {
 
 
 
-  <div className="">
-    <h2>Booked Rides:</h2>
-    <ul>
-      {driverRides.map((data) => (
-        <li key={data._id}>
-          <strong>Driver: {data.driver.fullName}</strong>
-          <br />
+
+
+<div>
+  <h2>Booked Rides:</h2>
+  {driverRides.map((data) => (
+    <Card key={data._id} className="mb-2">
+      <Card.Body>
+        <Card.Title>Driver: {data.driver.fullName}</Card.Title>
+        <Card.Text>
           From: {data.pickup}
           <br />
           To: {data.destination}
@@ -168,50 +204,52 @@ export const PassDashboard = () => {
           Time: {data.time}
           <br />
           Mobile: {data.driver.mobile}
-        </li>
-      ))}
-    </ul>
-  </div>
+        </Card.Text>
+        <Button variant="primary" onClick={() => handleChat(data._id)} className="chat-butt">Chat</Button>
+      </Card.Body>
+    </Card>
+  ))}
+</div>
 
-  <div className="search-results">
-    <h2>Ride History:</h2>
-    <ul className="list-group">
-      {searchResults.map((data) => (
-        <li key={data._id}>
+
+<div className="search-results">
+  <h2>Ride History:</h2>
+  {searchResults.map((data) => (
+    <Card key={data._id} className="mb-3">
+      <Card.Body>
+        <Card.Title>
           <strong>Driver: {data.driver.fullName}</strong>
-          <br />
-          Time: {data.time}
-          <br />
+        </Card.Title>
+        <Card.Text>
+          Time: {data.time}<br />
           Date: {formatDateString(data.completionDate)}
-          <br />
-          {data.review === 0 ? (
-            <div>
-              <label>Give Review:</label>
-              <Form.Select
-                onChange={(e) => setReviewValue(e.target.value)}
-              >
+        </Card.Text>
+        {data.review === 0 ? (
+          <div>
+            <label>Give Review:</label>
+            <div className="d-flex align-items-center" style={{ width: '2.5cm' }}>
+              <Form.Select onChange={(e) => setReviewValue(e.target.value)}>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
               </Form.Select>
-              Stars
-              <br />
-              <Button
-                onClick={() => handleReviewRide(data._id)}
-                variant="primary"
-              >
-                Review
+              <span className="ml-2">Stars</span>
+              <Button onClick={() => handleReviewRide(data._id)} variant="primary" className="rev-butt">
+               Submit Review
               </Button>
             </div>
-          ) : (
-            <div>Review: {data.review}</div>
-          )}
-        </li>
-      ))}
-    </ul>
-  </div>
+          </div>
+        ) : (
+          <div>Review: {data.review}</div>
+        )}
+      </Card.Body>
+    </Card>
+  ))}
+</div>
+
+
 
         </Col>
          {/* Right Column */}

@@ -28,6 +28,8 @@ export const DriverDashboard = () => {
       .then((response) => {
         // Assuming your backend returns passenger information with a "fullName" field
         const fullName = response.data.dvr.fullName;
+        const driverId = response.data.dvr._id;
+        localStorage.setItem("driverid",driverId);
         console.log(fullName);
 
 //        
@@ -125,8 +127,8 @@ const handleDeleteRide = (rideId) => {
         Authorization: token,
       },
     })
-    .then(() => {
 
+    .then(() => {
       alert("Ride deleted");
     })
     .catch((error) => {
@@ -143,8 +145,8 @@ const handleDeleteRide = (rideId) => {
     navigate("/construction");
   }
 
-  const chatWindow = () => {
-    navigate("/chatWindowDriver");
+  const notification = () => {
+    navigate("/Notification");
     
   }
 
@@ -163,16 +165,19 @@ const handleDeleteRide = (rideId) => {
               <Card.Text className="driver-para" >
               Reduce your daily commute costs and
  
- connect with fellow travelers. <br/>
+              connect with fellow travelers. <br/>
 
- Share your commute today for a greener,
+              Share your commute today for a greener,
 
- more efficient journey!
+              more efficient journey!
               </Card.Text>
 
          
             <Button onClick={openshareyourcommute} size="lg" variant="primary" className="custom-button">
             List Your Ride
+          </Button>
+          <Button onClick={notification} size="lg" variant="primary" className="custom-button2">
+            Chats
           </Button>
           </Card.Body>
       
@@ -184,28 +189,27 @@ const handleDeleteRide = (rideId) => {
             <h2>Your Listed Rides:</h2>
             <Row>
               {driverRides.map((ride) => (
-                <Col key={ride._id} sm={12} md={6} lg={4} xl={3}>
-                  <Card className="mb-3">
+                <Col key={ride._id}>
+                  <Card className="search">
                     <Card.Body>
                       <Card.Title className="mb-2">Pickup: {ride.pickup}</Card.Title>
+                      <Card.Title className="mb-2">Destination: {ride.destination}</Card.Title>
                       <Card.Text>
-                        Destination: {ride.destination}
-                        <br />
                         Time: {ride.time}
                         <br />
                         Status: {ride.status}
                       </Card.Text>
                       {ride.status === "Booked" && (
-                        <Button onClick={() => handleCompleteRide(ride._id)} variant="success">
+                        <Button onClick={() => handleCompleteRide(ride._id)} variant="success" className="comp-butt">
                           Complete
                         </Button>
                       )}
                       {ride.status === "Completed" && (
-                        <Button onClick={() => handleAvailableRide(ride._id)} variant="warning">
+                        <Button onClick={() => handleAvailableRide(ride._id)} variant="warning" className="av-butt" >
                           Make Available
                         </Button>
                       )}
-                      <Button onClick={() => handleDeleteRide(ride._id)} variant="danger">
+                      <Button onClick={() => handleDeleteRide(ride._id)} variant="danger" className="del-butt"> 
                         Delete Ride
                       </Button>
                     </Card.Body>

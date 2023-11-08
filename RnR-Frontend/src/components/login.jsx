@@ -6,7 +6,7 @@ import Signup from "../assets/signup.png"
 import {Button, Card, Col, Row, Image} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useNavigate } from "react-router-dom";
-
+import Footer from "../components/Footer";
 export const LoginPage = () => {
 
   const navigate=useNavigate();
@@ -25,7 +25,7 @@ export const LoginPage = () => {
   const openlogindriver = () => {
     navigate("/login_driver");
   }
-
+  
   const openloginpassenger = () => {
     navigate("/login_passenger");
   }
@@ -68,6 +68,7 @@ export const LoginPage = () => {
 
       </Col>
       </Row>
+      <Footer/>
       </div>
 
 

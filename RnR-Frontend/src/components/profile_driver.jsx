@@ -4,7 +4,17 @@ import Header_In from "./Header_In";
 import pp from "../assets/pp.png"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  ListGroup,
+  Button,
+  Form,
+  ButtonGroup,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Profile_Driver = () => {
 
@@ -26,7 +36,7 @@ export const Profile_Driver = () => {
       },
     })
     .then((response) => {
-      // Assuming your backend returns passenger information with a "fullName" field
+
       const driver = response.data.dvr;
       console.log(driver);
       setDriver(driver);
@@ -37,12 +47,11 @@ export const Profile_Driver = () => {
     }
     )
     .catch((error) => {
-      // Handle errors, e.g., if the token is invalid
+
       console.error("Error fetching Driver data: ", error);
       navigate("/login"); // Redirect to login if there's an error
     });
 
-     // Fetch the rides listed by the driver
    axios
    .get("http://localhost:4000/dvrRideHistory", {
      headers: {
@@ -125,50 +134,59 @@ const handleUploadNID = () => {
 
 
   return (
-    <div className="profile-page">
+
+    <Container className="profile-page">
 
       <Header_In/>
-
-      <div className="Profile_Frame">
+      <Row>
+        <Col className="Profile_Frame">
+     
         <div className="profile-info">
           <div className="profile-picture">
             <img className="PP" alt="Group" src={`http://localhost:4000/`+image} />
             </div>
            
             <br/>
-          
-          <div className="main_info">
+          <Card  className="main_info">
+          <div>
             <h>{driver.fullName}</h>
             <br/>
-            <h>Rating: {rating}</h>
+            <p className="cmall">Rating: {rating}</p>
             <br/>
           </div>
+          </Card>
+          
           <div className="user-details1">
           <h2>Personal Information</h2>
-            <p>Email: {driver.email} </p>
-            <p>Mobile No: {driver.mobile} </p>
-            <p>License: {driver.licnum} </p>
-            <p>Reg_no: {driver.vehnum} </p>
+            <ListGroup className="li-pro">
+              <ListGroup.Item>Email: {driver.email}</ListGroup.Item>
+              <ListGroup.Item>Mobile No: {driver.mobile}</ListGroup.Item>
+              <ListGroup.Item>License: {driver.licnum}</ListGroup.Item>
+              <ListGroup.Item>Reg_no: {driver.vehnum}</ListGroup.Item>
+            </ListGroup>
             <h2>Vehicle Information</h2>
-            <p>Make: {driver.make}</p>
-            <p>Model:{driver.model} </p>
-            <p>Year: {driver.year} </p>
-            <p>color: {driver.color} </p>
+            <ListGroup className="li-pro">
+              <ListGroup.Item>Make: {driver.make}</ListGroup.Item>
+              <ListGroup.Item>Model: {driver.model}</ListGroup.Item>
+              <ListGroup.Item>Year: {driver.year}</ListGroup.Item>
+              <ListGroup.Item>Color: {driver.color}</ListGroup.Item>
+            </ListGroup>
             {/* Add more user information here */}
-
-            <div>
+            
+            
+            <div className="upload-img">
             <input type="file" accept="image/*" onChange={handleFileChange}></input>
-            <button className="up-button" onClick={handleUploadImage} >
-              Upload Image
-            </button>
+            <Button className="up-button" onClick={handleUploadImage} >
+            Upload Image
+            </Button>
             </div>
             <br/>
             
             <div>
             <input type="file" accept="image/*" onChange={handleNIDChange}></input>
-            <button className="up-button" onClick={handleUploadNID} >
+            <Button className="upnid-button" onClick={handleUploadNID} >
               Upload NID
-            </button>
+            </Button>
             </div>
             <br/>
             <div className="nid-picture">
@@ -177,8 +195,9 @@ const handleUploadNID = () => {
           </div>
           
         </div>
-      </div>
-      
+  
+      </Col>
+      <Col>
       <div className="Ride_History">
         <h2>Ride History</h2>
           <ul>
@@ -195,7 +214,9 @@ const handleUploadNID = () => {
             ))}
           </ul>
       </div>
-    </div>
+      </Col>
+      </Row>
+    </Container>
   );
 };
 

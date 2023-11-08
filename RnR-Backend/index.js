@@ -399,6 +399,40 @@ app.post("/bookride/:rideId", passport.authenticate("jwt", { session: false }), 
   }
 });
 
+app.get("/conversation/", passport.authenticate("jwt", {session: false}), async (req,res) => {
+  const driverId = req.user._id;
+  try {
+    // Search for conversations where the driverId is one of the members and populate the passenger details
+    const conversations = await Conversation.find({
+      members: driverId
+    }).populate({
+      path: 'members',
+      select: 'fullName',
+     });
+
+    res.status(200).json(conversations);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "An error occurred while searching for conversations" });
+  }
+
+});
+
+//chatWindow driver
+app.get("/chatWindowDriver/:conversationId", passport.authenticate("jwt", {session: false}), async(req, res) =>{
+  const driverId = req.user._id;
+  const conversationId = req.params.conversationId;
+
+  const existingConversation = await Conversation.findById(conversationId);
+  if (existingConversation) {
+    console.log(conversationId);
+    res.status(200).json({conversationId});
+  }else{
+    console.log("convo not found");
+  }
+
+})
+
 
 //chat ------------------------------------------
 app.post("/chatWindow/:rideId", passport.authenticate("jwt", { session: false }), async (req, res) => {
@@ -455,7 +489,7 @@ app.post("/messages/:conversationId", async(req,res)=>{
   }catch(err){
     res.status(500).json(err);
   }
-})
+});
 
 app.get("/messages/:conversationId",passport.authenticate("jwt", { session: false }), async(req,res)=>{
   const senderId = req.user._id;

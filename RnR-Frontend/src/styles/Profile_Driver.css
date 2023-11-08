@@ -15,7 +15,7 @@
   position: absolute;
   left: 50px;
   top: 100px;
-  height: 510px;
+  height: 5cm;
   width: 570px;
   background-color: rgb(238, 238, 238);
   border-radius: 10px;
@@ -24,6 +24,9 @@ input[type="file"] {
   display: flex;
   position:static;
   top: 100px
+}
+.li-pro{
+  width: 13cm;
 }
 
 button {
@@ -55,17 +58,20 @@ button {
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   padding: 10px;
+
   padding-right: 350px;
   margin: 2px 0;
   position: absolute;
   top: 200px;
-  left: 10px
+  left: 10px;
+  width: 14cm;
 }
 
 .user-details1 p {
   margin: 5px 0;
   font-size: 16px;
   line-height: 1.5;
+
 }
 
 .user-details1 h2 {
@@ -88,12 +94,15 @@ button {
   left: 20px;
   top: 50px;
   font-size: 20px;
-  line-height: 50px;
   font-weight: bold;
   margin: 5px;
+  padding: 0.25cm;
+  width: 8cm;
   
 }
-
+.cmall{
+  font-size: 15px;
+}
 .checked {
   color: orange;
 }
@@ -124,7 +133,9 @@ li {
   margin: 5px 0;
   padding: 20px;
 }
-
+.upload-img{
+  margin-top: 1cm;
+}
 .nid-picture {
   width: 100%; /* Adjust the width to your layout */
   max-width: 300px; /* Set a maximum width if needed */
@@ -139,4 +150,11 @@ li {
   max-width: 100%; /* Ensure the image doesn't overflow the container */
   height: auto; /* Maintain the image's aspect ratio */
   display: block; /* Remove extra spacing under the image */
+}
+.up-button{
+  position: static;
+}
+.upnid-button{
+  position: static;
+  
 }

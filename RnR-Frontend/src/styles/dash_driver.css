@@ -19,7 +19,10 @@
 .custom-button{
   margin-top: .3cm;
 }
-
+.custom-button2{
+  margin-top: .3cm;
+  margin-left: 5cm;
+}
 
 
 /* Style the search results */
@@ -32,10 +35,11 @@
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -74,4 +78,19 @@ img {
 .btn-danger {
   background-color: #DC3545;
   border-color: #DC3545;
+}
+.av-butt{
+
+  margin-top: -.5cm;
+}
+.del-butt{
+  margin-top: -.5cm;
+  margin-left: 6cm;
+}
+.comp-butt{
+  margin-top: -.5cm;
+}
+
+.search{
+  padding-bottom: .5cm;
 }

@@ -209,10 +209,13 @@ input {
   background-color: #75bf7a;
   color: #fff;
   border: none;
-  padding: 10px 162px;
+  padding: 10px 16px;
   cursor: pointer;
   font-size: 20px;
   border-radius: 4px;
+  position: static;
+  margin-top: -0.5cm;
+  width: 4cm;
 }
 
 .signup_driver-page  .signup-driver-button:hover {

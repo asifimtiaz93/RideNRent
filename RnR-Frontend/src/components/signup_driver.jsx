@@ -139,7 +139,7 @@ export const Signup_Driver = () => {
         <input type="number"
         value={year}
         onChange={(e) => setyear(e.target.value)}
-        id="year" placeholder="Year" />
+        id="year" placeholder="Year" /> 
         <input type="number"
         value={capacity}
         onChange={(e) => setcapacity(e.target.value)}
