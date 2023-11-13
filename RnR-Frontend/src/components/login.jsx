@@ -7,6 +7,8 @@ import {Button, Card, Col, Row, Image} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+
+
 export const LoginPage = () => {
 
   const navigate=useNavigate();
@@ -56,7 +58,7 @@ export const LoginPage = () => {
          </Button>
 
          <Button variant="success" onClick={openloginpassenger} size="lg" className="button-log">
-          I'm a passenger
+          I'm a Passenger
          </Button>
          </Card>
 

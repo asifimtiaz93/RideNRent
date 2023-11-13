@@ -21,12 +21,12 @@ const dvrSchema = new mongoose.Schema({
     vehnum: {
         unique: true,
         type: String,
-        required: true
+      
     },
     licnum: {
         unique: true,
         type: String, 
-        required: true
+       
     },
     rating:{
         type: Number,

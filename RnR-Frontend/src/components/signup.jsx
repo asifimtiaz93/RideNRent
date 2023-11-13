@@ -1,49 +1,37 @@
 import React from "react";
-import "../styles/signup.css";
-
-import logo from "../assets/Group.png"
-import Signup from "../assets/signup.png"
-
+import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/Group.png";
+import SignupImage from "../assets/signup.png";
+import "../styles/signup.css";
+import HeaderOut from "../components/header_out";
 
-export const SignUp = () => {
+const SignUp = () => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
-  const openlogin = () => {
-    navigate("/login");
-  }
-  const opensignup = () => {
-    navigate("/signup");
-  }
-  const openconstruction = () => {
-    navigate("/construction");
-  }
-  const openlanding = () => {
+  const openLanding = () => {
     navigate("/");
-  }
-  const opensignupdriver = () => {
-    navigate("/signup_driver");
-  }
+  };
 
-  const opensignuppassenger = () => {
+  const openConstruction = () => {
+    navigate("/construction");
+  };
+
+  const openLogin = () => {
+    navigate("/login");
+  };
+
+  const openSignUpDriver = () => {
+    navigate("/signup_driver");
+  };
+
+  const openSignUpPassenger = () => {
     navigate("/signup_passenger");
-  }
+  };
 
   return (
-    <div className="sign-up">
-
-        <header className="header">
-              <div className="group-2">
-                <button onClick={openlanding} className="text-wrapper">RideNRent</button>
-                <img className="group-3" alt="Group" src={logo} />
-          </div>
-         <div className="menu"> 
-          <button onClick={openconstruction} className="text-wrapper-3">How it works</button>
-          <button onClick={openlogin} className="text-wrapper-4">Log In</button>
-          <button onClick={opensignup} className="text-wrapper-5">Sign Up</button>
-        </div>
-      </header>
-
+    <Container className="sign-up">
+      <HeaderOut/>
 
       <div className="frame">
         <div className="frame-wrapper">
@@ -54,14 +42,16 @@ export const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="frame-2" onClick={opensignupdriver} >
+      <Button className="frame-2" onClick={openSignUpDriver}>
         <div className="text-wrapper-6">I’m a Driver</div>
-      </div>
-      <div className="frame-3" onClick={opensignuppassenger} >
-        <div  className="text-wrapper-7">I’m a Passenger</div>
-      </div>
-      <img className="element" alt="Element" src={Signup} />
-    </div>
+      </Button>
+      <Button className="frame-3" onClick={openSignUpPassenger}>
+        <div className="text-wrapper-7">I’m a Passenger</div>
+      </Button>
+      <img className="element" alt="Element" src={SignupImage} />
+      
+    </Container>
+    
   );
 };
 

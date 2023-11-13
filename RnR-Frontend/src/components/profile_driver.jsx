@@ -71,6 +71,10 @@ export const Profile_Driver = () => {
 
 
 }, []);
+function formatDateString(dateString) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+}
 
 const handleFileChange = (e) => {
   const selectedFile = e.target.files[0];
@@ -205,7 +209,7 @@ const handleUploadNID = () => {
               <div className="Ride_Frame">
                 <li>{ride.pickup} to {ride.destination} on {ride.time} at {ride.fare} BDT 
                 <br/>
-                Date: {ride.completionDate}
+                Date:  {formatDateString(ride.completionDate)}
                 <br/>
                 Rating: {ride.review}
                 <br/>

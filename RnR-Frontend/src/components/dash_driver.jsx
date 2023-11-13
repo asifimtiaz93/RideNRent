@@ -119,10 +119,12 @@ const handleAvailableRide = (rideId) => {
 };
 
 const handleDeleteRide = (rideId) => {
+
   const token = localStorage.getItem("token");
+
   // Make an API request to update the ride's status to "Completed"
   axios
-    .delete(`http://localhost:4000/deleteRide/${rideId}`, null, {
+    .post(`http://localhost:4000/deleteRide/${rideId}`, null, {
       headers: {
         Authorization: token,
       },
@@ -130,11 +132,12 @@ const handleDeleteRide = (rideId) => {
 
     .then(() => {
       alert("Ride deleted");
+      navigate("/dash_driver");
     })
     .catch((error) => {
       console.error("Error deleting ride: ", error);
       // Handle completion error, e.g., show an error message
-      alert("Ride Deleted Successfully");
+      alert("Error occured while deeting ride");
     });
 };
 
@@ -187,9 +190,9 @@ const handleDeleteRide = (rideId) => {
 
           <div className="">
             <h2>Your Listed Rides:</h2>
-            <Row>
+            <Col>
               {driverRides.map((ride) => (
-                <Col key={ride._id}>
+                <Row key={ride._id}>
                   <Card className="search">
                     <Card.Body>
                       <Card.Title className="mb-2">Pickup: {ride.pickup}</Card.Title>
@@ -214,9 +217,9 @@ const handleDeleteRide = (rideId) => {
                       </Button>
                     </Card.Body>
                   </Card>
-                </Col>
+                </Row>
               ))}
-            </Row>
+            </Col>
           </div>
         </Col>
 

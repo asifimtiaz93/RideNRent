@@ -458,7 +458,7 @@ app.post("/chatWindow/:rideId", passport.authenticate("jwt", { session: false })
       const newMessage = new Message({
         conversationId: conversationId,
         sender: passengerId,
-        text: "Hi"
+        text: "Are you ready for a ride?"
       })
       const savedMessage = await newMessage.save();
     }
@@ -605,26 +605,22 @@ app.put("/availableRide/:rideId", passport.authenticate("jwt", { session: false 
 });
 
 
-app.delete("/deleteRide/:rideId", passport.authenticate("jwt", { session: false }), async (req, res) => {
+app.post("/deleteRide/:rideId", passport.authenticate("jwt", { session: false }), async (req, res) => {
   const rideId = req.params.rideId;
-console.log(rideId);
+
   try {
-    // Find the ride by ID
-    const ride = await Ride.findById(rideId);
-    console.log(ride);
+
+    const ride = await Ride.findByIdAndDelete(rideId);
+
     if (!ride) {
       return res.status(404).json({ message: 'Ride not found' });
     }
 
-    // Perform any additional validation here, e.g., check if the ride belongs to the logged-in driver
-
-    // Delete the ride
-    await ride.remove();
 
     return res.status(200).json({ message: 'Ride deleted successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "An error occurred while making the ride available again" });
+    res.status(500).json({ message: "An error occurred while deleting the ride" });
   }
 });
 //------------- Uodate Review -----------

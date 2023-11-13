@@ -5,6 +5,7 @@ import logo from "../assets/Group.png"
 import Main from "../assets/Main.jpg"
 import left from "../assets/left.svg"
 import right from "../assets/right.svg"
+import Footer from "../components/Footer";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,8 +19,8 @@ export const Landing = () => {
     navigate("/signup");
   }
 
-  const openconstruction = () => {
-    navigate("/construction");
+  const faq = () => {
+    navigate("/faq");
   }
   const openlanding = () => {
     navigate("/");
@@ -35,7 +36,7 @@ export const Landing = () => {
                 <img className="group-3" alt="Group" src={logo} />
           </div>
          <div className="menu"> 
-          <button onClick={openconstruction} className="text-wrapper-3">How it works</button>
+          <button onClick={faq} className="text-wrapper-3">How it works</button>
           <button onClick={openlogin} className="text-wrapper-4">Log In</button>
           <button onClick={opensignup} className="text-wrapper-5">Sign Up</button>
         </div>
@@ -54,7 +55,7 @@ export const Landing = () => {
           <br />
           So what are you waiting for?
           <br />
-          Lets ride together
+          Lets ride together !
         </p>
         <img className="main-image" alt="Main image" src={Main} />
         <button className="overlap-5">
@@ -78,6 +79,7 @@ export const Landing = () => {
           <img className="img-2" alt="Img" src={left} />
         </button>
       </div>
+
     </div>
   );
 };

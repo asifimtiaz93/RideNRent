@@ -1,132 +1,15 @@
-.driver-commute {
-    background-color: #ffffff;
-    height: 650px;
-    position: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
+.commute-driver-form{
 
-  
-  .driver-commute .frame-wrapper {
-    align-items: flex-start;
-    display: inline-flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 24px;
-    position: relative;
-  }
-  
-  .driver-commute .div-wrapper {
-    align-items: flex-start;
-    display: inline-flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 48px;
-    position: relative;
-  }
-  
-  .driver-commute .log-in-wrapper {
-    align-items: flex-start;
-    display: inline-flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-  }
-  
-  .driver-commute .log-in {
-    color: #000000;
-    font-family: "Anybody-Regular", Helvetica;
-    font-size: 50px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: normal;
-    margin-top: -100px;
-    position: relative;
-    white-space: nowrap;
-    width: fit-content;
-  }
-  
-  .driver-commute .drivertext2 {
-    color: #000000;
-    font-family:  
-     'PT Serif', serif;
-    font-size: 45px;
-    font-weight: 500;
-    left: 80px;
-    letter-spacing: 0;
-    line-height: 50px;
-    position: absolute;
-    top: 150px;
-  }
-  
-  .driver-commute .commute-driver-form {
-    color: #000000;
-      font-family: "Anybody-Regular", Helvetica;
-      font-size: 40px;
-      font-weight: 500;
-      letter-spacing: 0;
-      line-height: normal;
-      position:absolute;
-      white-space: nowrap;
-      width: 350px;
-      
-      flex-direction: column;
-      top: 0px;
-      left:0px;
-  }
-  
-  .commute-driver-form {
-      max-width: 408px;
-      margin-top: 220px; /* top margin */
-      margin-bottom: 20px; 
-      margin-left: 107px; /*  left margin */
-      margin-right: 20px; 
-      
-      font-family: "Anybody-Regular", Helvetica;
-      text-align: left;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
+}
+.drivertext2{
+  margin-top: 3cm;
+  color: black;
 
-  
-  
+}
 
+.driverdashpic{
+  margin-top: -1cm;
+  width: 80%;
+  margin-left: 2cm;
+}
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  .driver-commute .driverdashpic {
-    height: 420px;
-    width: 700px;
-    left: 600px;
-    position: absolute;
-    top: 120px;
-  }
-  
-  .commutedriver-button {
-
-    background-color: #75bf7a;
-    color: #fff;
-
-    padding: 10px 50px;
-
-    font-size: 20px;
-    border-radius: 4px;
-  }
-  
- .commutedriver-button:hover {
-    background-color: #26692a;
-  }

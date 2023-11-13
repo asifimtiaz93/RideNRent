@@ -4,7 +4,7 @@ import "../styles/chatWindow.css"
 import Header2 from "./header2";
 import Message from "./Message";
 import axios from "axios";
-
+import "../styles/Footer.css";
 
 const chatWindow = (own) => {
   const [messages, setMessages] = useState([]);
@@ -75,7 +75,6 @@ const chatWindow = (own) => {
       </div>
 
       
-
     </div>
   )
 }

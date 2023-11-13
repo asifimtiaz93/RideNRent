@@ -209,10 +209,11 @@
     background-color: #75bf7a;
     color: #fff;
     border: none;
-    padding: 10px 162px;
+    padding: 10px 16px;
     cursor: pointer;
     font-size: 20px;
     border-radius: 4px;
+    position: static;
   }
   
   .signup_passenger-page  .signup-passenger-button:hover {

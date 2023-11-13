@@ -1,0 +1,50 @@
+/* signup_driver.css */
+.signup_driver-page {
+    background-color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:1cm;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  .signup-butt{
+    position: static;
+  }
+  .group-2 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .group-3 {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  
+  .signupdriver-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    
+  }
+  
+  /* Add more CSS styles as needed */
+  

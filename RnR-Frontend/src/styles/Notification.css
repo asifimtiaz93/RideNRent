@@ -14,7 +14,7 @@ h1 {
   margin-bottom: 15px;
 }
 .card:hover {
-  box-shadow: 0 0 10px 2px #007bff;
+  box-shadow: 0 0 10px 2px #75bf7a;
   transition: box-shadow 0.3s ease-in-out;
 }
 

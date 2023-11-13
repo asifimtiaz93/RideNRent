@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../styles/chatWindow.css';
 import Header2 from './header2';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import Footer from "../components/Footer";
 
 
 const ChatWindow = () => {
@@ -99,6 +99,7 @@ const ChatWindow = () => {
             </Form>
           </Col>
         </Row>
+        <Footer/>
       </Container>
     </div>
   );

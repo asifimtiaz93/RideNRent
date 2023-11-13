@@ -11,8 +11,7 @@ const Footer = () => {
             <div className="footer-section">
               <h4>About Us</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                non arcu in turpis porttitor pretium ac id eros.
+              Empowering seamless transportation experiences, one ride at a time.
               </p>
             </div>
           </Col>
@@ -20,10 +19,10 @@ const Footer = () => {
             <div className="footer-section">
               <h4>Contact Us</h4>
               <p>
-                123 Main Street <br />
-                City, State 12345 <br />
-                Email: info@example.com <br />
-                Phone: (123) 456-7890
+                MIST <br />
+                Mirpur Cantonment <br />
+                Email: G6@mist.com <br />
+                Phone: 01769-111111
               </p>
             </div>
           </Col>
@@ -51,7 +50,7 @@ const Footer = () => {
           </Col>
         </Row>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Your Website. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Group 06. All rights reserved.</p>
         </div>
       </Container>
     </footer>

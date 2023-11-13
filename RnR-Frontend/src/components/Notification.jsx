@@ -52,7 +52,7 @@ const NotificationPage = () => {
       <Row>
         <Col md={8}>
           {searchResults.map((result) => (
-            <Card
+            <Card 
               key={result._id}
               className="mb-3"
               onClick={() => handleCardClick(result)}

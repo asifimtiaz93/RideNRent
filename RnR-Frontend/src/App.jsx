@@ -26,6 +26,7 @@ import ChatWindow from "./components/chatWindow";
 import ChatWindowDriver from "./components/chatWindowDriver";
 import Marzun from "./components/marzun"
 import Notification from "./components/Notification";
+import FAQ from "./components/faq"
 export const App = () => {
   return (
     <div className="landing-page">
@@ -53,7 +54,7 @@ export const App = () => {
         <Route path="search_passenger" element={<Search_Passenger/>}/>
         <Route path="chatWindow" element={<ChatWindow/>}/>
         <Route path="chatWindowDriver" element={<ChatWindowDriver/>}/>
-
+        <Route path="faq" element={<FAQ/>}/>
         <Route path="notification" element={<Notification/>}/>
       </Routes>
     </div>

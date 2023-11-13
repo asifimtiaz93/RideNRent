@@ -95,6 +95,7 @@ const handleBookRide = (rideId) => {
     .then(() => {
       // Handle booking success, e.g., show a confirmation message
       alert("Ride booked successfully!");
+      navigate("/dash_passenger");
     })
     .catch((error) => {
       console.error("Error booking ride: ", error);
@@ -188,22 +189,52 @@ const handleSaveUser = (e) => {
         <h1 className="font-weight-bold text-4xl">Book A Commute!</h1>
       <Card className="border shadow-sm p-3 ">
         <Form>
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="text"
-              value={pickup}
-              onChange={(e) => setPickup(e.target.value)}
-              placeholder="Boarding Point"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control
-              type="text"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              placeholder="Destination Point"
-            />
-          </Form.Group>
+        <Form.Group className="mb-3">
+  <Form.Select
+    value={pickup}
+    onChange={(e) => setPickup(e.target.value)}
+    aria-label="Select Boarding Point"
+  >
+    <option>Select Boarding Point</option>
+    <option value="Mirpur - 1">Mirpur - 1</option>
+    <option value="Mirpur - 10">Mirpur - 10</option>
+    <option value="Mirpur - 12">Mirpur - 12</option>
+    <option value="Mirpur - 11">Mirpur - 11</option>
+    <option value="Mirpur - 14 ">Mirpur - 14</option>
+    <option value="Mirpur - 6">Mirpur - 6</option>
+    <option value="Pallabi">Mirpur</option>
+    <option value="Dhanmondi">Dhanmondi</option>
+    <option value="Gulshan">Gulshan</option>
+    <option value="Uttara">Uttara</option>
+    <option value="Banani">Banani</option>
+    <option value="Mohakhali">Mohakhali</option>
+    {/* Add more Dhaka cities as options */}
+  </Form.Select>
+</Form.Group>
+
+<Form.Group className="mb-3">
+  <Form.Select
+    value={destination}
+    onChange={(e) => setDestination(e.target.value)}
+    aria-label="Select Destination Point"
+  >
+    <option>Select Destination Point</option>
+    <option value="Mirpur - 1">Mirpur - 1</option>
+    <option value="Mirpur - 10">Mirpur - 10</option>
+    <option value="Mirpur - 12">Mirpur - 12</option>
+    <option value="Mirpur - 11">Mirpur - 11</option>
+    <option value="Mirpur - 14 ">Mirpur - 14</option>
+    <option value="Mirpur - 6">Mirpur - 6</option>
+    <option value="Pallabi">Mirpur</option>
+    <option value="Mirpur">Mirpur</option>
+    <option value="Dhanmondi">Dhanmondi</option>
+    <option value="Gulshan">Gulshan</option>
+    <option value="Uttara">Uttara</option>
+    <option value="Banani">Banani</option>
+    <option value="Mohakhali">Mohakhali</option>
+    {/* Add more Dhaka cities as options */}
+  </Form.Select>
+</Form.Group>
           <Form.Group className="mb-3">
             <Form.Control
               type="number"
@@ -264,9 +295,7 @@ const handleSaveUser = (e) => {
                       Book
                     </Button>
                   )}
-                  <Button onClick={() => handleChat(ride._id)} variant="outline-success" className="cust-btn">
-                    Chat
-                  </Button>
+                
                 </div>
               </li>
             ))}
