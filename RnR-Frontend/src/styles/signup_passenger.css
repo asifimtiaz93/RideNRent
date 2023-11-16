@@ -1,9 +1,11 @@
 .signup_passenger-page {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+
+  margin-top: -1cm;
+  align-items:first baseline;
+  justify-content:left;
   }
   
   .signup_passenger-page .div {
@@ -103,7 +105,10 @@
     top: 11px;
     white-space: nowrap;
   }
-  
+  .signup_pass-form{
+    margin-left: 1cm;
+    color: #75bf7a;
+  }
   .landing-page .text-wrapper-4 {
     color: #000000;
     font-family: "Actor-Regular", Helvetica;
@@ -180,7 +185,7 @@
   }
   
   .signuppassenger-form-container {
-      max-width: 408px;
+      max-width: 12cm;
       margin-top: 220px; /* top margin */
       margin-bottom: 20px; 
       margin-left: 107px; /*  left margin */
@@ -219,6 +224,12 @@
   .signup_passenger-page  .signup-passenger-button:hover {
     background-color: #26692a;
   }
-  
+
+  .signup-pass-image{
+    width:12cm;
+    margin-left:4cm;
+    border-radius: 2px;
+    margin-top: 4cm;
+  }
   
   

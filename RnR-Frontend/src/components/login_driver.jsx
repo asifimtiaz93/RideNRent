@@ -3,7 +3,8 @@ import "../styles/login_driver.css";
 import axios from "axios";
 import logo from "../assets/Group.png"
 import Car from "../assets/login.png"
-
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
 export const LoginDriver = () => {
@@ -24,7 +25,7 @@ export const LoginDriver = () => {
   const opendriverdash = () => {
     navigate("/dash_driver");
   }
-  
+ 
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   
@@ -42,7 +43,8 @@ export const LoginDriver = () => {
         navigate('/dash_driver');
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Invalid Credentials!");
+        console.log("err");
       })
     };
   return (
@@ -65,7 +67,6 @@ export const LoginDriver = () => {
           Log In as Driver           
         </div>
 
-        
           <div className="form-container">
           <input type="text"
             value={email}
@@ -78,13 +79,9 @@ export const LoginDriver = () => {
             id="password" placeholder="Enter your password" />
             <button onClick={handleSubmit} className="login-button">Log In</button>
           </div>
-        
-        
 
-        
-        
         <img className="main-image" alt="Main image" src={Car} />
-        
+
         
       </div>
     </div>

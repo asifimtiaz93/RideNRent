@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
 import Message from './Message';
 import axios from 'axios';
 
@@ -16,7 +16,8 @@ const ChatWindow = () => {
   const rideId = localStorage.getItem('rideid');
   const token = localStorage.getItem('token');
   const [textm, settext] = useState('');
-
+  const driverId = localStorage.getItem('driverid');
+  const [dvr, setDvr]  =useState([]);
   useEffect(() => {
     axios
       .post(`http://localhost:4000/chatWindow/${rideId}`, null, {
@@ -47,6 +48,24 @@ const ChatWindow = () => {
       .catch((error) => {
         console.log(error);
       });
+
+  });
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/profileDvr/${driverId}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setDvr(response.data.dvr)
+        console.log(dvr);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   });
 
   const handleSend = (e) => {
@@ -77,6 +96,15 @@ const ChatWindow = () => {
 
       <Container>
         <Row>
+          <Col xs={4} >
+            <Card className="driver-details">
+
+
+          Driver: {dvr.fullName}
+          <br/>
+          Mobile: {dvr.mobile}
+          </Card >
+          </Col>
 
           <Col className="chat-box">
             <div className="chat-box-wrapper">

@@ -16,6 +16,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
@@ -94,7 +95,8 @@ const handleBookRide = (rideId) => {
     })
     .then(() => {
       // Handle booking success, e.g., show a confirmation message
-      alert("Ride booked successfully!");
+      toast.success("Ride booked successfully!");
+      //alert("Ride booked successfully!");
       navigate("/dash_passenger");
     })
     .catch((error) => {
@@ -202,7 +204,7 @@ const handleSaveUser = (e) => {
     <option value="Mirpur - 11">Mirpur - 11</option>
     <option value="Mirpur - 14 ">Mirpur - 14</option>
     <option value="Mirpur - 6">Mirpur - 6</option>
-    <option value="Pallabi">Mirpur</option>
+    <option value="Pallabi">Pallabi</option>
     <option value="Dhanmondi">Dhanmondi</option>
     <option value="Gulshan">Gulshan</option>
     <option value="Uttara">Uttara</option>
@@ -225,8 +227,7 @@ const handleSaveUser = (e) => {
     <option value="Mirpur - 11">Mirpur - 11</option>
     <option value="Mirpur - 14 ">Mirpur - 14</option>
     <option value="Mirpur - 6">Mirpur - 6</option>
-    <option value="Pallabi">Mirpur</option>
-    <option value="Mirpur">Mirpur</option>
+    <option value="Pallabi">Pallabi</option>
     <option value="Dhanmondi">Dhanmondi</option>
     <option value="Gulshan">Gulshan</option>
     <option value="Uttara">Uttara</option>
@@ -283,7 +284,18 @@ const handleSaveUser = (e) => {
               <li key={ride._id} className="border border-success shadow mb-3">
                 <strong>Driver: {ride.driver.fullName}</strong>
                 <br />
-                Pickup: {ride.pickup}, Destination: {ride.destination}, Time: {ride.time}, Status: {ride.status}, Rating: {ride.driver.rating}, Fare: {ride.fare}
+                Pickup: {ride.pickup}
+                <br/>
+                Destination: {ride.destination}
+                <br/>
+                Time: {ride.time}
+                <br/>
+                Status: {ride.status}
+                <br/>
+                Fare: {ride.fare}
+                
+                <br/>
+                Rating: {ride.driver.rating}
                 <br />
                 <div className="d-flex justify-content-between">
                   {ride.status !== "Booked" && (

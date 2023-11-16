@@ -35,7 +35,64 @@ export const Signup_Driver = () => {
   const [capacity, setCapacity] = useState("");
   const [year, setYear] = useState("");
   const [color, setColor] = useState("");
- 
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (value) => {
+    // Define the email pattern using a regular expression
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if the value matches the email pattern
+    const isValidEmail = emailPattern.test(value);
+
+    // Set the error message based on the validation result
+    setEmailError(isValidEmail ? '' : 'Invalid email format');
+
+    return isValidEmail;
+  };
+  const [vehNumError, setVehNumError] = useState('');
+
+  const validateVehNum = (value) => {
+    // Define the vehicle registration number pattern using a regular expression
+    const vehNumPattern = /^[A-Z]+-[A-Z]-\d{2}-\d{4}$/;
+
+    // Check if the value matches the pattern
+    const isValidVehNum = vehNumPattern.test(value);
+
+    // Set the error message based on the validation result
+    setVehNumError(isValidVehNum ? '' : 'Invalid vehicle registration number format');
+
+    return isValidVehNum;
+  };
+  const [mobileError, setMobileError] = useState('');
+
+  const validateMobile = (value) => {
+    // Define the mobile number pattern using a regular expression
+    const mobilePattern = /^01\d{9}$/;
+
+    // Check if the value matches the pattern
+    const isValidMobile = mobilePattern.test(value);
+
+    // Set the error message based on the validation result
+    setMobileError(isValidMobile ? '' : 'Invalid mobile number format');
+
+    return isValidMobile;
+  };
+  const carMakes = [
+    'ALFA ROMEO', 'Aston Martin Lagonda Ltd', 'Audi', 'BMW', 'Chevrolet', 'Dodge',
+    'Ferrari', 'Honda', 'Jaguar', 'Lamborghini', 'MAZDA', 'McLaren', 'Mercedes-Benz',
+    'NISSAN', 'Pagani Automobili S.p.A.', 'Porsche', 'FIAT', 'Mini', 'SCION', 'Subaru',
+    'Bentley', 'Buick', 'Ford', 'HYUNDAI MOTOR COMPANY', 'LEXUS', 'MASERATI', 'Roush',
+    'Volkswagen', 'Acura', 'Cadillac', 'INFINITI', 'KIA MOTORS CORPORATION',
+    'Mitsubishi Motors Corporation', 'Rolls-Royce Motor Cars Limited', 'TOYOTA',
+    'Volvo', 'Chrysler', 'Lincoln', 'GMC', 'RAM', 'CHEVROLET', 'Jeep', 'Land Rover'
+  ];
+
+  const carModels = [
+    '4Runner', '86', 'Avalon', 'Avalon Hybrid', 'Camry', 'Camry Hybrid', 'C-HR', 'Corolla',
+    'Corolla Hatchback', 'Corolla Hybrid', 'GR Supra', 'Highlander', 'Highlander Hybrid',
+    'Land Cruiser', 'Mirai', 'Prius', 'Prius Prime', 'RAV4', 'RAV4 Hybrid', 'Sequoia', 'Sienna',
+    'Tacoma Access Cab', 'Tacoma Double Cab', 'Tundra CrewMax', 'Tundra Double Cab', 'Yaris', 'Yaris Hatchback'
+  ];
 
   const handleSaveUser = (e) => {
    
@@ -92,23 +149,32 @@ export const Signup_Driver = () => {
             </Form.Group>
             
             <Form.Group controlId="email">
-              <Form.Control
-                type="text"
-                value={email}
-                onChange={(e) => {setEmail(e.target.value); validateForm();
-                }}
-                placeholder="Email"
-              />
-            </Form.Group>
+       
+            <Form.Control
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                validateEmail(e.target.value);
+              }}
+              placeholder="Enter your email"
+              isInvalid={!!emailError}
+            />
+            <Form.Control.Feedback type="invalid">{emailError}</Form.Control.Feedback>
+          </Form.Group>
 
             <Form.Group controlId="mobile">
-              <Form.Control
-                type="tel"
-                value={mobile}
-                onChange={(e) => {setMobile(e.target.value); validateForm();
-                }}
-                placeholder="Phone Number"
-              />
+            <Form.Control
+              type="tel"
+              value={mobile}
+              onChange={(e) => {
+                setMobile(e.target.value);
+                validateMobile(e.target.value);
+              }}
+              placeholder="Enter Mobile Number (e.g., 01234567890)"
+              isInvalid={!!mobileError}
+            />
+            <Form.Control.Feedback type="invalid">{mobileError}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="password">
@@ -121,15 +187,19 @@ export const Signup_Driver = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="vehNum">
-              <Form.Control
-                type="text"
-                value={vehNum}
-                onChange={(e) => {setVehNum(e.target.value); validateForm();
-                }}
-                placeholder="Veh Reg Number ex: DHAKA-D-11-9999"
-              />
-            </Form.Group>
+           <Form.Group controlId="vehNum">
+           <Form.Control
+              type="text"
+              value={vehNum}
+              onChange={(e) => {
+                setVehNum(e.target.value);
+                validateVehNum(e.target.value);
+              }}
+              placeholder="Enter Veh Reg Number (e.g., ABC-D-11-9999)"
+              isInvalid={!!vehNumError}
+            />
+            <Form.Control.Feedback type="invalid">{vehNumError}</Form.Control.Feedback>
+            </Form.Group> 
 
             <Form.Group controlId="licNum">
               <Form.Control
@@ -154,13 +224,14 @@ export const Signup_Driver = () => {
           setMake(e.target.value);
           validateForm();
         }}
-        style={{ padding: '8px' }}
+        style={{ padding: '6px', marginBottom: '8px' }}
       >
         <option>Select Make</option>
-        <option value="Toyota">Toyota</option>
-        <option value="Honda">Honda</option>
-        <option value="Ford">Ford</option>
-        {/* Add more options based on available makes */}
+        {carMakes.map((carMake, index) => (
+          <option key={index} value={carMake}>
+            {carMake}
+          </option>
+        ))}
       </Form.Select>
     </Form.Group>
 
@@ -172,13 +243,15 @@ export const Signup_Driver = () => {
           setModel(e.target.value);
           validateForm();
         }}
-        style={{ padding: '8px' }}
+        style={{ padding: '8px', marginBottom: '8px' }}
       >
         <option>Select Model</option>
-        <option value="Camry">Camry</option>
-        <option value="Accord">Accord</option>
-        <option value="Focus">Focus</option>
-        {/* Add more options based on available models */}
+        {carModels.map((carModel, index) => (
+      <option key={index} value={carModel}>
+        {carModel}
+      </option>
+    ))}
+   
       </Form.Select>
     </Form.Group>
 

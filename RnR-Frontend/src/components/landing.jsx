@@ -56,7 +56,12 @@ export const Landing = () => {
           So what are you waiting for?
           <br />
           Lets ride together !
+       
         </p>
+        <div className="footer">
+        <Footer/>
+        </div>
+  
         <img className="main-image" alt="Main image" src={Main} />
         <button className="overlap-5">
           <div className="group-wrapper">
@@ -79,7 +84,7 @@ export const Landing = () => {
           <img className="img-2" alt="Img" src={left} />
         </button>
       </div>
-
+  
     </div>
   );
 };

@@ -6,7 +6,7 @@ import logo from "../assets/Group.png"
 import Main from "../assets/Main.jpg"
 import left from "../assets/left.svg"
 import right from "../assets/right.svg"
-
+import Footer from "./Footer";
 const HowItWorks = () => {
     const navigate=useNavigate();
     const openlogin = () => {
@@ -127,6 +127,7 @@ const HowItWorks = () => {
       </Card>
     </Col>
   </Row>
+  <Footer/>
 </Container>
 
 

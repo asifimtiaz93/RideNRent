@@ -255,6 +255,29 @@ app.get("/profileDvr", passport.authenticate("jwt", { session: false }), async (
   }
 });
 
+//chat driver fetch
+app.get("/profileDvr/:driverId", passport.authenticate("jwt", { session: false }), async (req, res) => {
+  // Ensure the user is authenticated (JWT token is valid)
+  const driverId = req.params.driverId; // Access the authenticated user's ID
+
+  try {
+    // Use async/await to fetch passenger information
+    const dvr = await Dvr.findById(driverId);
+
+    if (!dvr) {
+      // If dvr not found, return an appropriate response
+      return res.status(404).json({ message: "dvr not found" });
+    }
+
+    // If dvr found, return dvr information
+    const { fullName, email, mobile } = dvr;
+    res.status(200).json({ dvr });
+  } catch (err) {
+    // Handle errors, e.g., database query error
+    console.error(err);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
 
 app.post("/registerRide", async (req, res) => {
   try {

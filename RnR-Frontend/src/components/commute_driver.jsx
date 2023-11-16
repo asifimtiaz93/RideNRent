@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Header2 from "./header2";
 import Signup from "../assets/driverpic2.png";
 import "../styles/commute_driver.css";
-
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const DriverCommute = () => {
   const navigate = useNavigate();
 
@@ -61,6 +62,7 @@ const DriverCommute = () => {
       .post("http://localhost:4000/registerRide", data)
       .then(() => {
         console.log(data);
+        toast.success("Ride Listed Successfully!")
         navigate("/dash_driver");
       })
       .catch((err) => {
@@ -84,15 +86,16 @@ const DriverCommute = () => {
     value={pickup}
     onChange={(e) => setPickup(e.target.value)}
     className="w-4/50 h-7 p-2 text-base"
+    style={{ padding: '8px', marginBottom: '8px' }}
   >
     <option value="">Select Pickup Location</option>
-    <option value="mirpur1">Mirpur 1</option>
+    <option value="Mirpur - 1">Mirpur 1</option>
     <option value="Mirpur - 10">Mirpur - 10</option>
     <option value="Mirpur - 12">Mirpur - 12</option>
     <option value="Mirpur - 11">Mirpur - 11</option>
     <option value="Mirpur - 14 ">Mirpur - 14</option>
     <option value="Mirpur - 6">Mirpur - 6</option>
-    <option value="Pallabi">Mirpur</option>
+    <option value="Pallabi">Pallabi</option>
     <option value="Dhanmondi">Dhanmondi</option>
     <option value="Gulshan">Gulshan</option>
     <option value="Uttara">Uttara</option>
@@ -107,15 +110,16 @@ const DriverCommute = () => {
     value={destination}
     onChange={(e) => setDestination(e.target.value)}
     className="w-4/50 h-7 p-2 text-base"
+    style={{ padding: '8px', marginBottom: '8px' }}
   >
     <option value="">Select Destination Location</option>
-    <option value="mirpur1">Mirpur 1</option>
+    <option value="Mirpur - 1">Mirpur 1</option>
     <option value="Mirpur - 10">Mirpur - 10</option>
     <option value="Mirpur - 12">Mirpur - 12</option>
     <option value="Mirpur - 11">Mirpur - 11</option>
     <option value="Mirpur - 14 ">Mirpur - 14</option>
     <option value="Mirpur - 6">Mirpur - 6</option>
-    <option value="Pallabi">Mirpur</option>
+    <option value="Pallabi">Pallabi</option>
     <option value="Dhanmondi">Dhanmondi</option>
     <option value="Gulshan">Gulshan</option>
     <option value="Uttara">Uttara</option>

@@ -27,6 +27,8 @@ import ChatWindowDriver from "./components/chatWindowDriver";
 import Marzun from "./components/marzun"
 import Notification from "./components/Notification";
 import FAQ from "./components/faq"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const App = () => {
   return (
     <div className="landing-page">
@@ -56,7 +58,9 @@ export const App = () => {
         <Route path="chatWindowDriver" element={<ChatWindowDriver/>}/>
         <Route path="faq" element={<FAQ/>}/>
         <Route path="notification" element={<Notification/>}/>
+        
       </Routes>
+      <ToastContainer/>
     </div>
   );
 };

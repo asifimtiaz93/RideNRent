@@ -3,7 +3,8 @@ import "../styles/login_passenger.css";
 import axios from "axios";
 import logo from "../assets/Group.png"
 import Car from "../assets/login.png"
-
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -41,6 +42,7 @@ export const Login = () => {
         navigate('/dash_passenger');
       })
       .catch((err) => {
+        toast.error("Invalid Credentials!")
         console.log(err);
       })
     };

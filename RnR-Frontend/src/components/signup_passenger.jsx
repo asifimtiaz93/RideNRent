@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import "../styles/signup_passenger.css";
+import { Button, Container, Form, InputGroup, Col, Row, Image } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import logo from "../assets/Group.png"
-import Car from "../assets/passenger.png"
-
+import Car from "../assets/ss.jpg"
+import HeaderOut from "./header_out";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "./Footer";
 const Signup_Passenger = () => {
 
   const navigate=useNavigate();
@@ -33,7 +35,35 @@ const Signup_Passenger = () => {
   const [email, setemail] = useState('');
   const [mobile, setmobile] = useState('');
   const [password, setpassword] = useState('');
-  
+  const [mobileError, setMobileError] = useState('');
+
+  const validateMobile = (value) => {
+    // Define the mobile number pattern using a regular expression
+    const mobilePattern = /^01\d{9}$/;
+
+    // Check if the value matches the pattern
+    const isValidMobile = mobilePattern.test(value);
+
+    // Set the error message based on the validation result
+    setMobileError(isValidMobile ? '' : 'Invalid mobile number format');
+
+    return isValidMobile;
+  };
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (value) => {
+    // Define the email pattern using a regular expression
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if the value matches the email pattern
+    const isValidEmail = emailPattern.test(value);
+
+    // Set the error message based on the validation result
+    setEmailError(isValidEmail ? '' : 'Invalid email format');
+
+    return isValidEmail;
+  };
+
   const handleSaveUser = (e) => {
     const data = {
       fullName,
@@ -54,62 +84,88 @@ const Signup_Passenger = () => {
 
 
   return (
+    <Container>
     <div className="signup_passenger-page">
-      <div className="div">
 
-      <header className="header">
-              <div className="group-2">
-                <button onClick={openlanding} className="text-wrapper">RideNRent</button>
-                <img className="group-3" alt="Group" src={logo} />
-          </div>
-         <div className="menu"> 
-          <button onClick={openconstruction} className="text-wrapper-3">How it works</button>
-          <button onClick={openlogin} className="text-wrapper-4">Log In</button>
-          <button onClick={opensignup} className="text-wrapper-5">Sign Up</button>
-        </div>
-      </header>
+        <HeaderOut/>
 
-        <div className="signup_passenger-form">
-          Sign Up as Passenger             
-        </div>
+      
+      <Col>
+      <Container className="signuppassenger-form-container">
+      
+   <Row><h2 className="signup_pass-form">Sign Up</h2>
+   <Col xs={6} className="gen">
+    
+   <Form>
+     <Form.Group controlId="fullname">
+       <Form.Control
+         type="text"
+         required
+         value={fullName}
+         onChange={(e) => {setfullName(e.target.value);
+           validateForm();
+         }}
+         placeholder="Full Name"
+       />
+     </Form.Group>
+     
+     <Form.Group controlId="email">
 
-        
-        <div className="signuppassenger-form-container">
-        <input type="text"
-        value={fullName}
-        onChange={(e) => setfullName(e.target.value)}
-        id="fullname" placeholder="Full Name" />
+     <Form.Control
+       type="text"
+       value={email}
+       onChange={(e) => {
+         setemail(e.target.value);
+         validateEmail(e.target.value);
+       }}
+       placeholder="Enter your email"
+       isInvalid={!!emailError}
+     />
+     <Form.Control.Feedback type="invalid">{emailError}</Form.Control.Feedback>
+   </Form.Group>
 
-        <input type="text" 
-        value={email}
-        onChange={(e) => setemail(e.target.value)}
-        id="email" placeholder="Email" />
+     <Form.Group controlId="mobile">
+     <Form.Control
+       type="tel"
+       value={mobile}
+       onChange={(e) => {
+         setmobile(e.target.value);
+         validateMobile(e.target.value);
+       }}
+       placeholder="Enter Mobile Number (e.g., 01234567890)"
+       isInvalid={!!mobileError}
+     />
+     <Form.Control.Feedback type="invalid">{mobileError}</Form.Control.Feedback>
+     </Form.Group>
 
-        <input type="number" 
-        value={mobile}
-        onChange={(e) => setmobile(e.target.value)}
-        id="mobile" placeholder="Phone Number" />
+     <Form.Group controlId="password">
+       <Form.Control
+         type="password"
+         value={password}
+         onChange={(e) => {setpassword(e.target.value);validateForm();
+         }}
+         placeholder="New Password"
+       />
+     </Form.Group>
 
-        <input type="password"
-        value={password}
-        onChange={(e) => setpassword(e.target.value)}
-        id="password" placeholder="New Password" />
 
-        
-
-        <button onClick={handleSaveUser} className="signup-passenger-button">SignUp</button>
-        </div>
-        
-        
-
-        
-        
-        <img className="main-image" alt="Main image" src={Car} />
-        
-        
-      </div>
+   </Form>
+   <Button onClick={handleSaveUser} variant="success" className="signup-butt" >
+Sign Up
+</Button>
+   </Col>
+  
+   </Row>
+ </Container>
+      </Col>
+      <Col>
+      <Image src={Car} fluid alt="Image" className="signup-pass-image" /> 
+      </Col>
+    
     </div>
-  );
+    
+  </Container>
+);
 };
 
 export default Signup_Passenger;

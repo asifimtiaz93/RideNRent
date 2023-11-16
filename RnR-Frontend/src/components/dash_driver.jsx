@@ -8,6 +8,8 @@ import chatWindow from "./chatWindow";
 import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"
 import Placeholder from 'react-bootstrap/Placeholder';
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const DriverDashboard = () => {
   
   const navigate=useNavigate();
@@ -81,11 +83,13 @@ const handleCompleteRide = (rideId) => {
       });
       setDriverRides(updatedRides);
       // Handle completion success, e.g., show a confirmation message
-      alert("Ride completed successfully!");
+      toast.success("Ride completed successfully!");
+      //alert("Ride completed successfully!");
     })
     .catch((error) => {
       console.error("Error completing ride: ", error);
       // Handle completion error, e.g., show an error message
+      
       alert("Error completing ride. Please try again later.");
     });
 };
@@ -109,7 +113,8 @@ const handleAvailableRide = (rideId) => {
       });
       setDriverRides(updatedRides);
       // Handle completion success, e.g., show a confirmation message
-      alert("Ride made available again!");
+      //alert("Ride made available again!");
+      toast.success("Ride made available again!");
     })
     .catch((error) => {
       console.error("Error completing ride: ", error);
@@ -131,13 +136,15 @@ const handleDeleteRide = (rideId) => {
     })
 
     .then(() => {
-      alert("Ride deleted");
+      toast.success("Ride Deleted Successfully !");
+      //alert("Ride deleted");
       navigate("/dash_driver");
     })
     .catch((error) => {
       console.error("Error deleting ride: ", error);
       // Handle completion error, e.g., show an error message
-      alert("Error occured while deeting ride");
+      toast.error("Error occured while deleting ride!");
+     //alert("Error occured while deeting ride");
     });
 };
 
