@@ -86,9 +86,14 @@ const handleBookRide = (rideId) => {
     alert("You must be logged in as a passenger to book a ride.");
     return;
   }
+
+  const requestData = {
+    seats: seats,
+  };
+
   // Make an API request to update the Ride model as booked
   axios
-    .post(`http://localhost:4000/bookride/${rideId}`, null, {
+    .post(`http://localhost:4000/bookride/${rideId}`, requestData, {
       headers: {
         Authorization: token,
       },
@@ -297,8 +302,9 @@ const handleSaveUser = (e) => {
                 <br/>
                 Rating: {ride.driver.rating}
                 <br />
+               <p>Seats Available: {ride.seats}</p>
                 <div className="d-flex justify-content-between">
-                  {ride.status !== "Booked" && (
+                  {(ride.status == "Booked" || ride.status == "Available") && (
                     <Button
                       onClick={() => handleBookRide(ride._id)}
                       variant="success"

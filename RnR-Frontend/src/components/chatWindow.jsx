@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card, Image } from 'react-bootstrap';
 import Message from './Message';
 import axios from 'axios';
 
@@ -18,6 +18,7 @@ const ChatWindow = () => {
   const [textm, settext] = useState('');
   const driverId = localStorage.getItem('driverid');
   const [dvr, setDvr]  =useState([]);
+  const [image, setImage] = useState("");
   useEffect(() => {
     axios
       .post(`http://localhost:4000/chatWindow/${rideId}`, null, {
@@ -60,6 +61,7 @@ const ChatWindow = () => {
       })
       .then((response) => {
         setDvr(response.data.dvr)
+        setImage(dvr.image);
         console.log(dvr);
       })
       .catch((error) => {
@@ -97,13 +99,18 @@ const ChatWindow = () => {
       <Container>
         <Row>
           <Col xs={4} >
-            <Card className="driver-details">
+          <Card className="driver-details">
+      <Card.Img variant="top" src={`http://localhost:4000/` + image} alt="Driver Profile" className="PPsize" />
+      <Card.Body>
+        <Card.Title>{dvr.fullName}</Card.Title>
+        <Card.Text className="pads">
+          <strong>Mobile:</strong> {dvr.mobile}
+          <br />
+          <strong>Ratings:</strong> {dvr.rating}
 
-
-          Driver: {dvr.fullName}
-          <br/>
-          Mobile: {dvr.mobile}
-          </Card >
+        </Card.Text>
+      </Card.Body>
+    </Card>
           </Col>
 
           <Col className="chat-box">

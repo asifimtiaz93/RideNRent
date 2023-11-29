@@ -54,6 +54,20 @@
     border-left: 1px solid #ddd;
   }
   .driver-details{
-    margin-top: 4cm;
+    width: 100%;
+    margin-top: 2cm;
+    
 
   }
+
+
+
+  /* admin.css */
+
+
+.PPsize {
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain the image's aspect ratio */
+}
+
+/* You can add more styling based on your preferences */

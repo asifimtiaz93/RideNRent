@@ -55,11 +55,167 @@ app.get("/", (req,res) =>{
 
 })
 
+//-----------------------------------------admin----------------------------
+app.get("/userCount", async (req,res) =>{
+  const passCount = await Psngr.countDocuments();
+  const dvrCount = await Dvr.countDocuments();
+  const rideCount = await Ride.countDocuments();
+  const totalFareResult = await RideHistory.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalFare: { $sum: "$fare" }
+      }
+    }
+  ]);
 
+  // If there are results, return the total fare, otherwise, return 0
+  const totalFare = totalFareResult.length > 0 ? totalFareResult[0].totalFare : 0;
 
+  res.status(200).json({
+    passengerCount: passCount,
+    driverCount: dvrCount,
+    rideCount: rideCount,
+    totalFare: totalFare
+  });
+});
 
+app.get("/farePerDay/:month/:year", async (req, res) => {
+  try {
+    const { month, year } = req.params;
+
+    const farePerDayResult = await RideHistory.aggregate([
+      {
+        $match: {
+          $expr: {
+            $and: [
+              { $eq: [{ $month: "$completionDate" }, parseInt(month)] },
+              { $eq: [{ $year: "$completionDate" }, parseInt(year)] },
+            ]
+          }
+        }
+      },
+      {
+        $group: {
+          _id: { $dayOfMonth: "$completionDate" },
+          totalFare: { $sum: "$fare" }
+        }
+      },
+      {
+        $sort: { _id: 1 }
+      }
+    ]);
+
+    const farePerDay = farePerDayResult.map(entry => ({
+      day: entry._id,
+      totalFare: entry.totalFare
+    }));
+
+    res.status(200).json({ farePerDay });
+  } catch (error) {
+    console.error("Error calculating fare per day:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/ridesPerDay/:month/:year", async (req, res) => {
+  try {
+    const { month, year } = req.params;
+
+    const ridesPerDayResult = await RideHistory.aggregate([
+      {
+        $match: {
+          $expr: {
+            $and: [
+              { $eq: [{ $month: "$completionDate" }, parseInt(month)] },
+              { $eq: [{ $year: "$completionDate" }, parseInt(year)] },
+            ]
+          }
+        }
+      },
+      {
+        $group: {
+          _id: { $dayOfMonth: "$completionDate" },
+          count: { $sum: 1 }
+        }
+      },
+      {
+        $sort: { _id: 1 }
+      }
+    ]);
+
+    const ridesPerDay = ridesPerDayResult.map(entry => ({
+      day: entry._id,
+      count: entry.count
+    }));
+
+    res.status(200).json({ ridesPerDay });
+  } catch (error) {
+    console.error("Error calculating rides per day:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get('/passengers', async (req, res) => {
+  try {
+    const passengers = await Psngr.find({}, 'fullName email');
+    res.status(200).json(passengers);
+  } catch (error) {
+    console.error('Error fetching passenger list:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Delete a passenger by ID
+app.delete('/passengers/:id', async (req, res) => {
+  try {
+    const passengerId = req.params.id;
+    const deletedPassenger = await Psngr.findByIdAndDelete(passengerId);
+    
+    if (!deletedPassenger) {
+      return res.status(404).json({ error: 'Passenger not found' });
+    }
+
+    res.status(200).json({ message: 'Passenger deleted successfully', deletedPassenger });
+  } catch (error) {
+    console.error('Error deleting passenger:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/Drivers', async (req, res) => {
+  try {
+    const drivers = await Dvr.find({}, 'fullName email');
+    res.status(200).json(drivers);
+  } catch (error) {
+    console.error('Error fetching driver list:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Delete a driver by ID
+app.delete('/Drivers/:id', async (req, res) => {
+  try {
+    const driverId = req.params.id;
+    const deletedDriver = await Dvr.findByIdAndDelete(driverId);
+    
+    if (!deletedDriver) {
+      return res.status(404).json({ error: 'Driver not found' });
+    }
+
+    res.status(200).json({ message: 'Driver deleted successfully', deletedDriver });
+  } catch (error) {
+    console.error('Error deleting driver:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//---------------------------------------------------------------------
 
 //-----------------------------------------Routes---------------------------------------------
+
+
+
 //register route : post
 app.post("/register", async (req,res) =>{
     const psngr = await Psngr.findOne({email: req.body.email});
@@ -318,7 +474,10 @@ app.post("/searchrides", async (req, res) => {
     const matchingRides = await Ride.find({
       pickup: pickup,
       destination: destination,
-      status: "Available", // Ensure the ride is still available
+      $or: [
+        { status: "Available" },
+        { status: "Booked" }
+       ], // Ensure the ride is still available
       seats: { $gte: seats }, // Ensure available seats are greater than or equal to the requested seats
     }).populate({
       path: 'driver', // Assuming 'driver' is the name of the field referencing the Driver model
@@ -390,7 +549,7 @@ app.get("/searchridehistory", passport.authenticate("jwt", { session: false }), 
 app.post("/bookride/:rideId", passport.authenticate("jwt", { session: false }), async (req, res) => {
   const passengerId = req.user._id;
   const rideId = req.params.rideId;
-
+  const seats = req.body.seats;
   try {
     // First, check if the passenger is allowed to book this ride (you can add more checks if needed)
     const ride = await Ride.findById(rideId);
@@ -404,12 +563,12 @@ app.post("/bookride/:rideId", passport.authenticate("jwt", { session: false }), 
     }
 
     // Update the Ride model to reduce the available seats
-    ride.seats = ride.seats - 1;
+    ride.seats = ride.seats - seats;
 
     // Update the status of the ride to "Booked"
     ride.status = "Booked";
 
-    // Add the passenger to the ride (you may need to have a field in your model to store booked passengers)
+    // Add the passenger to the ride (you may need to have a field in your model to store booked Drivers)
     ride.passenger = passengerId;
 
     // Save the updated ride
@@ -476,7 +635,7 @@ app.post("/chatWindow/:rideId", passport.authenticate("jwt", { session: false })
       conversationId: conversationId
     })
     if (existMessage){
-      
+        console.log("welcome back");
     }else{
       const newMessage = new Message({
         conversationId: conversationId,
@@ -580,6 +739,7 @@ app.put("/completeRide/:rideId", passport.authenticate("jwt", { session: false }
 
     // Update the ride's status to "Completed"
     ride.status = "Completed";
+    ride.seats = 4;
     await ride.save();
 
 

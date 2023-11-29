@@ -19,7 +19,7 @@ export const LoginPage = () => {
     navigate("/signup");
   }
   const openconstruction = () => {
-    navigate("/construction");
+    navigate("/faq");
   }
   const openlanding = () => {
     navigate("/");

@@ -1,0 +1,23 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(218, 249, 221);
+    margin-top: 2cm;
+  }
+  
+  .login-card {
+    width: 300px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  .log-but{
+    position: static;
+    margin-top: .5cm;
+    margin-left: 2cm;
+  }
+  

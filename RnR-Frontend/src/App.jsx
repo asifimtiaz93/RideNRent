@@ -27,6 +27,10 @@ import ChatWindowDriver from "./components/chatWindowDriver";
 import Marzun from "./components/marzun"
 import Notification from "./components/Notification";
 import FAQ from "./components/faq"
+import AdminDashboard from "./components/admin";
+import AdminPass from "./components/adminPassList";
+import AdminDvr from "./components/adminDvrList";
+import AdminLogin from "./components/adminLogin";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export const App = () => {
@@ -58,6 +62,10 @@ export const App = () => {
         <Route path="chatWindowDriver" element={<ChatWindowDriver/>}/>
         <Route path="faq" element={<FAQ/>}/>
         <Route path="notification" element={<Notification/>}/>
+        <Route path="admin" element={<AdminDashboard/>}/>
+        <Route path="adminPass" element={<AdminPass/>}/>
+        <Route path="adminDvr" element={<AdminDvr/>}/>
+        <Route path="adminLogin" element={<AdminLogin/>}/>
         
       </Routes>
       <ToastContainer/>

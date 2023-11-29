@@ -59,7 +59,7 @@ const NotificationPage = () => {
             >
               <Card.Body>
                 <Card.Title>
-                  <Badge bg="#75bf7a">New</Badge>
+                  
                   New message from @{result.members[0]?.fullName}
                 </Card.Title>
                 <Card.Text>{result.time}</Card.Text>

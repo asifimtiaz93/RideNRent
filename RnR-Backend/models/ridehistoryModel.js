@@ -16,9 +16,7 @@ const rideHistorySchema = new mongoose.Schema({
   fare: Number,
   review: {
     type: Number,
-    default: 0,
-    
-
+    default: 0,    
   },
 });
 
